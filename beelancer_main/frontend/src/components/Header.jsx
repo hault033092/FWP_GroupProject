@@ -1,13 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
-import {Link} from 'react-router-dom'
 
 const Header = () => {
   return (
-    <div></div>
+    <div>
+      <h1>Styled Your Header Here!</h1>
+    </div>
   )
-
-
 }
 
 export default Header
