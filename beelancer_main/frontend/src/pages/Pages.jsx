@@ -6,7 +6,7 @@ import FindFreelancer from './FindFreelancer'
 import Home from './Home'
 import SignIn from './SignIn'
 import SignUp from './SignUp'
-import PostJob from './PostJob'
+import JobPost from './JobPost'
 
 const Pages = () => {
   return (
@@ -17,7 +17,7 @@ const Pages = () => {
       <Route path='/SignUp' element={<SignUp />} />
       <Route path='/FindFreelancer' element={<FindFreelancer />} />
       <Route path='/BeFreelancer' element={<BeFreelancer />} />
-      <Route path='/PostJob' element={<PostJob />} />
+      <Route path='/JobPost' element={<JobPost />} />
     </Routes>
   )
 }
