@@ -50,7 +50,7 @@ const Home = () => {
                     position: 'relative',
                     maxWidth: '600px',
                   }}
-                  src='./images/image62.png'
+                  src='/image62.png'
                 />
               </div>
               <div className='rightCol'>
