@@ -25,10 +25,10 @@ const Home = () => {
               </div>
               <div className="leftCol">
                 <p>WANT TO BECOME A BEE IN CLICKS.</p>
-                <p>OUR NEST?</p>
-                <p>GET YOURSELF SEEN BY</p>
-                <p>OUR CLIENTS WITH JUST A</p>
-                <p>FEW CLICKS.</p>
+                <p>GET YOURSELF SEEN BY OUR CLIENTS WITH JUST A FEW CLICKS</p>
+                <p>WORK YOUR WAY</p>
+                <p>YOU BRING THE SKILL</p>
+                <p>WE WILL MAKE EARNING EASY</p>
                 <Button txtColor="#fff" borderColor="#E9B141" bgColor="#E9B141">
                   BECOME A FREELANCER
                 </Button>
@@ -54,13 +54,13 @@ const Home = () => {
                 />
               </div>
               <div className="rightCol">
-                <p>WANT TO BECOME A BEE IN CLICKS.</p>
-                <p>OUR NEST?</p>
-                <p>GET YOURSELF SEEN BY</p>
-                <p>OUR CLIENTS WITH JUST A</p>
-                <p>FEW CLICKS.</p>
+                <p>A WHOLE WORLD OF FREELANCE TALENT AT YOUR FINGERTIPS</p>
+                <p>THE BEST FOR EVERY BUDGET</p>
+                <p>QUALITY WORK DONE QUICKLY</p>
+                <p>PROTECTED PAYMENTS, EVERY TIME</p>
+                <p>24/7 SUPPORT</p>
                 <Button txtColor="#22222280" borderColor="#E9B141" bgColor="transparent">
-                  BECOME A FREELANCER
+                  FIND A FREELANCER
                 </Button>
               </div>
             </div>
