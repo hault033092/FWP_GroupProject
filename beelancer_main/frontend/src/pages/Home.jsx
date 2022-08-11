@@ -1,69 +1,65 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react";
+import styled from "styled-components";
 
 const Home = () => {
   return (
     <div>
       {/* hero section start */}
       <HeroSection>
-        <Container bgColor='#ECECEC'>
-          <div style={{ width: '100%' }}>
-            <div className='wrap'>
+        <Container bgColor="#ECECEC">
+          <div style={{ width: "100%" }}>
+            <div className="wrap">
               <div
                 style={{
-                  position: 'relative',
-                  zIndex: '9',
+                  position: "relative",
+                  zIndex: "9",
                 }}
               >
-                <div className='leftLine' />
+                <div className="leftLine" />
                 <img
                   style={{
-                    position: 'relative',
+                    position: "relative",
                   }}
-                  src='./images/image2.png'
+                  src="./images/image2.png"
                 />
               </div>
-              <div className='leftCol'>
+              <div className="leftCol">
                 <p>WANT TO BECOME A BEE IN CLICKS.</p>
                 <p>OUR NEST?</p>
                 <p>GET YOURSELF SEEN BY</p>
                 <p>OUR CLIENTS WITH JUST A</p>
                 <p>FEW CLICKS.</p>
-                <Button txtColor='#fff' borderColor='#E9B141' bgColor='#E9B141'>
+                <Button txtColor="#fff" borderColor="#E9B141" bgColor="#E9B141">
                   BECOME A FREELANCER
                 </Button>
               </div>
             </div>
             {/* first col end */}
             {/* second col start */}
-            <div className='wrap2'>
+            <div className="wrap2">
               <div
                 style={{
-                  position: 'relative',
-                  zIndex: '9',
+                  position: "relative",
+                  zIndex: "9",
                 }}
               >
-                <div className='rightLine' />
+                <div className="rightLine" />
 
                 <img
                   style={{
-                    position: 'relative',
-                    maxWidth: '600px',
+                    position: "relative",
+                    maxWidth: "600px",
                   }}
-                  src='/image62.png'
+                  src="./images/image62.png"
                 />
               </div>
-              <div className='rightCol'>
+              <div className="rightCol">
                 <p>WANT TO BECOME A BEE IN CLICKS.</p>
                 <p>OUR NEST?</p>
                 <p>GET YOURSELF SEEN BY</p>
                 <p>OUR CLIENTS WITH JUST A</p>
                 <p>FEW CLICKS.</p>
-                <Button
-                  txtColor='#22222280'
-                  borderColor='#E9B141'
-                  bgColor='transparent'
-                >
+                <Button txtColor="#22222280" borderColor="#E9B141" bgColor="transparent">
                   BECOME A FREELANCER
                 </Button>
               </div>
@@ -74,145 +70,141 @@ const Home = () => {
       {/* hero section end */}
       <section
         style={{
-          display: 'flex',
-          justifyContent: 'center',
+          display: "flex",
+          justifyContent: "center",
         }}
       >
         <img
           style={{
-            width: '450px',
-            height: '550px',
+            width: "450px",
+            height: "550px",
           }}
-          src='./images/quote1.png'
+          src="./images/quote1.png"
         />
       </section>
       {/* qoute section end */}
 
       {/* client section start */}
-      <ExpectedSection bgColor={'#f0e1ba'}>
-        <h2 color='#000'>WHAT TO EXPECTED (AS A CLIENT)</h2>
+      <ExpectedSection bgColor={"#f0e1ba"}>
+        <h2 color="#000">WHAT TO EXPECTED (AS A CLIENT)</h2>
         <Container>
           <div
             style={{
-              textAlign: 'center',
+              textAlign: "center",
             }}
           >
-            <img src='./images/vector.png' />
+            <img src="./images/vector.png" />
             <h3>
               Financially
               <br /> benefit
             </h3>
             <p>
-              Decent quality but still affordable. Keeping you one step away
-              from emptying your wallet.
+              Decent quality but still affordable. Keeping you one step away from emptying your
+              wallet.
             </p>
           </div>
           <div
             style={{
-              textAlign: 'center',
+              textAlign: "center",
             }}
           >
-            <img src='./images/vector2.png' />
+            <img src="./images/vector2.png" />
             <h3>Secured and easy payment</h3>
             <p>
-              Payment methods are secured with top-notch security protocol and
-              it is easy as pie.
+              Payment methods are secured with top-notch security protocol and it is easy as pie.
             </p>
           </div>
           <div
             style={{
-              textAlign: 'center',
+              textAlign: "center",
             }}
           >
-            <img src='./images/vector3.png' />
+            <img src="./images/vector3.png" />
             <h3>All day and all night availability</h3>
             <p>
-              Never miss an oppotunity to find the best freelancer for the right
-              job with our 24/7 service.
+              Never miss an oppotunity to find the best freelancer for the right job with our 24/7
+              service.
             </p>
           </div>
         </Container>
       </ExpectedSection>
       {/* client section end */}
       {/* freelancer section start */}
-      <ExpectedSection bgColor={'#222222'}>
-        <h2 style={{ color: '#E8AA0C' }}>
-          {' '}
-          WHAT TO EXPECTED (AS A FREELANCER)
-        </h2>
+      <ExpectedSection bgColor={"#222222"}>
+        <h2 style={{ color: "#E8AA0C" }}> WHAT TO EXPECTED (AS A FREELANCER)</h2>
         <Container>
           <div
             style={{
-              textAlign: 'center',
+              textAlign: "center",
             }}
           >
-            <img src='./images/Vector4.png' />
+            <img src="./images/Vector4.png" />
             <h3
               style={{
-                color: '#E8AA0C',
+                color: "#E8AA0C",
               }}
             >
               A well-paid job
             </h3>
             <p
               style={{
-                color: '#E8AA0C',
+                color: "#E8AA0C",
               }}
             >
-              We understand that you come to us to make a living. And we are
-              happy to provide you the best earning.
+              We understand that you come to us to make a living. And we are happy to provide you
+              the best earning.
             </p>
           </div>
           <div
             style={{
-              textAlign: 'center',
+              textAlign: "center",
             }}
           >
-            <img src='./images/Vector5.png' />
+            <img src="./images/Vector5.png" />
             <h3
               style={{
-                color: '#E8AA0C',
+                color: "#E8AA0C",
               }}
             >
               You are safe being with us
             </h3>
             <p
               style={{
-                color: '#E8AA0C',
+                color: "#E8AA0C",
               }}
             >
-              Your personal information are in our safe. With your consent, only
-              the client can see who you are.
+              Your personal information are in our safe. With your consent, only the client can see
+              who you are.
             </p>
           </div>
           <div
             style={{
-              textAlign: 'center',
+              textAlign: "center",
             }}
           >
-            <img src='./images/Vector6.png' />
+            <img src="./images/Vector6.png" />
             <h3
               style={{
-                color: '#E8AA0C',
+                color: "#E8AA0C",
               }}
             >
               Effortless advertising
             </h3>
             <p
               style={{
-                color: '#E8AA0C',
+                color: "#E8AA0C",
               }}
             >
-              With just a few clicks and types, you will be advertised. Just sit
-              back and enjoy your coffe.
+              With just a few clicks and types, you will be advertised. Just sit back and enjoy your
+              coffe.
             </p>
           </div>
         </Container>
       </ExpectedSection>
       {/* freelancer section end */}
     </div>
-  )
-}
+  );
+};
 
 const ExpectedSection = styled.section`
   background-color: ${(props) => props.bgColor};
@@ -323,7 +315,7 @@ const ExpectedSection = styled.section`
       font-size: 18px;
     }
   }
-`
+`;
 
 const HeroSection = styled.section`
   background: #ececec;
@@ -342,7 +334,7 @@ const HeroSection = styled.section`
     background: #e9b141;
     top: 60px;
     left: -35px;
-    z-index: 1;
+    zindex: 1;
   }
   & .wrap {
     display: flex;
@@ -354,7 +346,7 @@ const HeroSection = styled.section`
     background: #e9b141;
     top: -60px;
     right: -35px;
-    z-index: 1;
+    zindex: 1;
   }
   & .leftCol {
     background: #ececec;
@@ -427,7 +419,7 @@ const HeroSection = styled.section`
       display: none;
     }
   }
-`
+`;
 
 const Button = styled.button`
   border: 2px solid ${(props) => props.borderColor};
@@ -438,12 +430,12 @@ const Button = styled.button`
   @media (max-width: 924px) {
     align-self: center;
   }
-`
+`;
 
 const Container = styled.section`
   display: flex;
   max-width: 1280px;
   width: 90%;
   margin: auto;
-`
-export default Home
+`;
+export default Home;
