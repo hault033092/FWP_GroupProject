@@ -60,7 +60,9 @@ const ContactUs = () => {
   )
 }
 const BackgroundLayer = styled.section`
-  position: absolute;
+  position: relative;
+  height: 0;
+  width: 100%;
   //overflow-x: hidden;
   .backgroundHolder{
     position: relative;
@@ -75,6 +77,28 @@ const BackgroundLayer = styled.section`
     position: absolute;
   }
   z-index: -1;
+  @media screen and (max-width:1300px) {
+    .backgroundHolder{
+      width: 100%;
+      overflow-x: hidden;
+    }
+    img{
+      position: relative;
+      overflow: hidden;
+      max-width: none;
+      height:900px;
+      width: auto;
+    }
+    #overlay{
+      display: none;
+    }
+  }
+  @media screen and (max-width: 1100px)
+  {
+    img{
+      height:1300px;
+    }
+  }
 `
 const ForegroundLayer = styled.section`
   position: relative;
@@ -221,6 +245,111 @@ const ForegroundLayer = styled.section`
       color: rgba(255,255,255,0.7)
     }
   }
+  @media screen and (max-width:1300px) {
+    padding: 0 50px;
+  }
+  @media screen and (max-width: 1100px) {
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    //background-color: aqua;
+    form{
+      width: 65%;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 0;
+    }
+    .leftPanel
+    {
+      width: 65%;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 0;
+      display: block;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 50px;
+      //  background-color: aliceblue;
+    .logo{
+      display: none;
+    }
+    .infoHolder{
+      width: 100%;
+    }
+    }
+  }
+  @media screen and (max-width: 900px){
+    form{
+      width: 75%;
+    }
+    .leftPanel{
+      width: 75%;
+    }
+  } 
+  @media screen and (max-width: 750px){
+    form{
+      width: 85%;
+    }
+    .leftPanel{
+      width: 85%;
+    }
+  } 
+  @media screen and (max-width: 650px){
+    form{
+      width: 95%;
+    }
+    .leftPanel{
+      width: 95%;
+      .infoHolder{
+        h2{
+          display: none;
+        }
+      }
+    }
+  } 
+  @media screen and (max-width: 600px){
+    padding: 0;
+    align-items: center;
+    form{
+      margin: 0;
+      width: 100%;
+      .des{
+        width: 90%;
+      }
+      .inputHolder{
+        display: flex;
+        flex-direction:column;
+        
+        width: 100%;
+        input{
+          width: 100%;
+          margin-top: 10px;
+        }
+      }
+    }
+    .leftPanel{
+      height: fit-content;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+      .infoHolder{
+        background-color: white;
+        margin: 0;
+        padding: 10px 0;
+        h2{
+          display: none;
+        }
+        p{
+          display: none;
+        }
+      }
+    }
+  } 
+  @media screen and (max-width: 600px){
+    form{
+    padding: 100px 30px 20px 30px;
+    }
+  }
 `
 const SocialList = styled.section`
 margin-top:20px;
@@ -230,7 +359,10 @@ img{
   cursor: pointer;
   margin-right: 10px;
 }
-
+@media screen and (max-width: 600px){
+  margin-top: 0;
+  justify-content: center;
+}
 `
 
 export default ContactUs
