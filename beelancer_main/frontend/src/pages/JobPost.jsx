@@ -1,6 +1,4 @@
 import React, { useState } from 'react'
-import Footer from '../components/Footer'
-import Header from '../components/Header'
 import styled from 'styled-components'
 
 import { BrowserRouter as Router, Routes, Link, Route } from 'react-router-dom'
@@ -51,7 +49,6 @@ const JobPost = () => {
   }
   return (
     <div style={{ backgroundColor: '#d6d6d6' }}>
-      <Header />
       <BackgroundLayer />
       <PostForm>
         <img className='logo' src={beelancer_logo} alt='beelancer logo' />
@@ -194,13 +191,10 @@ const JobPost = () => {
           <input className='submitButton' type='submit' value='Post Project' />
         </form>
       </PostForm>
-
-      <Footer />
     </div>
   )
 }
 
-export default JobPost
 const PostForm = styled.section`
   position: relative;
   margin-left: auto;
@@ -284,7 +278,7 @@ const BackgroundLayer = styled.section`
   width: 100%;
   background-color: #ececec;
   position: absolute;
-  height: 600px;
+  height: 1000px;
   z-index: 1;
 `
 const TextBox = styled.section`
@@ -573,3 +567,5 @@ const PaymentSection = styled.section`
     }
   }
 `
+
+export default JobPost
