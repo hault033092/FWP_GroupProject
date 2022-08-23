@@ -118,9 +118,12 @@ const Header = () => {
         </Left>
         <Right>
           <Menu>
-            <MenuItem to='/rating'>Rating</MenuItem>
+            <MenuItem to='/'>Home</MenuItem>
             <MenuItem to='/find-freelancer'>Find A Freelancer</MenuItem>
             <MenuItem to='/become-freelancer'>Become A Freelancer</MenuItem>
+            <MenuItem to='/rating'>Rating</MenuItem>
+            <MenuItem to='/contactus'>Contact Us</MenuItem>
+            <MenuItem to='/aboutus'>About Us</MenuItem>
             <MenuItem to='/faq'>FAQs</MenuItem>
           </Menu>
           <Button
