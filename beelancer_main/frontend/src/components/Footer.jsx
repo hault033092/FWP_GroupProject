@@ -1,11 +1,11 @@
 import React from 'react'
 import './Footer.css'
-import beelancer_logo from '../assets/logo.svg'
-import discord from '../assets/discord.svg'
-import facebook from '../assets/facebook.svg'
-import github from '../assets/github.svg'
-import google from '../assets/google.svg'
-import twitter from '../assets/twitter.svg'
+import beelancer_logo from '../assets/svg/logo.svg'
+import discord from '../assets/svg/discord.svg'
+import facebook from '../assets/svg/facebook.svg'
+import github from '../assets/svg/github.svg'
+import google from '../assets/svg/google.svg'
+import twitter from '../assets/svg/twitter.svg'
 const Footer = () => {
   return (
     <div className='section'>

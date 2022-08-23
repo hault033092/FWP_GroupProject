@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import LogoPng from '../assets/logo.svg'
-import SearchSvg from '../assets/search.svg'
+import LogoPng from '../assets/svg/logo.svg'
+import SearchSvg from '../assets/svg/search.svg'
 import { NavLink } from 'react-router-dom'
 
 export const Component = styled.div`
