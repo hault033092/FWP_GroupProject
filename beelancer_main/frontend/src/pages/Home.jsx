@@ -20,7 +20,7 @@ const Home = () => {
                   style={{
                     position: 'relative',
                   }}
-                  src='./images/image2.png'
+                  src='./assets/images/landing1.png'
                 />
               </div>
               <div className='leftCol'>

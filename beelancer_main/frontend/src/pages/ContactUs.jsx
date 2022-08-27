@@ -3,59 +3,79 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import styled from 'styled-components'
 //photo
-import Overlay from '../assets/Overlay.svg'
-import beelancer_logo from '../assets/beelancer_logo.svg'
-import NatureBackground from '../assets/NatureBackground.jpg'
+import Overlay from '../assets/svg/Overlay.svg'
+import beelancer_logo from '../assets/svg/logo.svg'
+import NatureBackground from '../assets/images/NatureBackground.jpg'
 //social media
-import discord from '../assets/discord.svg'
-import facebook from '../assets/facebook.svg'
-import github from '../assets/github.svg'
-import google from '../assets/google.svg'
-import twitter from '../assets/twitter.svg'
+import discord from '../assets/svg/discord.svg'
+import facebook from '../assets/svg/facebook.svg'
+import github from '../assets/svg/github.svg'
+import google from '../assets/svg/google.svg'
+import twitter from '../assets/svg/twitter.svg'
 const ContactUs = () => {
   return (
     <div>
-      <Header />
       <BackgroundLayer>
         <div className='backgroundHolder'>
-        <img src={NatureBackground} alt="" />
-        <img id ="overlay" src={Overlay} alt="" />
+          <img src={NatureBackground} alt='' />
+          <img id='overlay' src={Overlay} alt='' />
         </div>
       </BackgroundLayer>
       <ForegroundLayer>
-        <form action="">
+        <form action=''>
           <div className='titleHolder'>
             <h1>Contact Form</h1>
           </div>
-          <p className='des'>Fill this out so we can understand more about you and your need!</p>
+          <p className='des'>
+            Fill this out so we can understand more about you and your need!
+          </p>
           <div className='inputHolder'>
-          <input className='nameInput' type="text" id="name" name="name" placeholder='Full name' />
-          <input className='emailInput' type="text" id="email" name="email" placeholder='example@email.com' />
+            <input
+              className='nameInput'
+              type='text'
+              id='name'
+              name='name'
+              placeholder='Full name'
+            />
+            <input
+              className='emailInput'
+              type='text'
+              id='email'
+              name='email'
+              placeholder='example@email.com'
+            />
           </div>
-          <textarea name="description" id="description" placeholder='Type your message here'></textarea>
-          <input className='submitButton' type="submit" value="Post Project" />
+          <textarea
+            name='description'
+            id='description'
+            placeholder='Type your message here'
+          ></textarea>
+          <input className='submitButton' type='submit' value='Post Project' />
         </form>
         <div className='leftPanel'>
-        <img className='logo' src={beelancer_logo} alt="beelancer logo" />
-        <div className='infoHolder'>
-          <h2>🗺️Find Us</h2>
-           <p> Ho Chi Minh City, Vietnam</p>
-           <h2>✉ Email Us</h2>
-          <p> Email: Beelancer@gmail.com</p>
-          <h2> ☏ Call Us</h2>
-          <p>Call: +84 1900 6006</p>
-          <p className='note'>Monday - Friday: 9:00 AM to 6:00 PM </p>
-          <SocialList>
-        <img src={discord} alt="discord logo" className='socialConnect' />
-        <img src={facebook} alt="facebook logo" className='socialConnect' />
-        <img src={github} alt="github logo" className='socialConnect' />
-        <img src={google} alt="google logo" className='socialConnect' />
-        <img src={twitter} alt="twitter logo" className='socialConnect' />
-        </SocialList>
-        </div>
+          <img className='logo' src={beelancer_logo} alt='beelancer logo' />
+          <div className='infoHolder'>
+            <h2>🗺️Find Us</h2>
+            <p> Ho Chi Minh City, Vietnam</p>
+            <h2>✉ Email Us</h2>
+            <p> Email: Beelancer@gmail.com</p>
+            <h2> ☏ Call Us</h2>
+            <p>Call: +84 1900 6006</p>
+            <p className='note'>Monday - Friday: 9:00 AM to 6:00 PM </p>
+            <SocialList>
+              <img src={discord} alt='discord logo' className='socialConnect' />
+              <img
+                src={facebook}
+                alt='facebook logo'
+                className='socialConnect'
+              />
+              <img src={github} alt='github logo' className='socialConnect' />
+              <img src={google} alt='google logo' className='socialConnect' />
+              <img src={twitter} alt='twitter logo' className='socialConnect' />
+            </SocialList>
+          </div>
         </div>
       </ForegroundLayer>
-      <Footer />
     </div>
   )
 }
@@ -64,39 +84,38 @@ const BackgroundLayer = styled.section`
   height: 0;
   width: 100%;
   //overflow-x: hidden;
-  .backgroundHolder{
+  .backgroundHolder {
     position: relative;
   }
-  img{
+  img {
     top: 0px;
     left: 0;
     max-width: 100%;
     height: auto;
   }
-  #overlay{
+  #overlay {
     position: absolute;
   }
   z-index: -1;
-  @media screen and (max-width:1300px) {
-    .backgroundHolder{
+  @media screen and (max-width: 1300px) {
+    .backgroundHolder {
       width: 100%;
       overflow-x: hidden;
     }
-    img{
+    img {
       position: relative;
       overflow: hidden;
       max-width: none;
-      height:900px;
+      height: 900px;
       width: auto;
     }
-    #overlay{
+    #overlay {
       display: none;
     }
   }
-  @media screen and (max-width: 1100px)
-  {
-    img{
-      height:1300px;
+  @media screen and (max-width: 1100px) {
+    img {
+      height: 1300px;
     }
   }
 `
@@ -106,121 +125,119 @@ const ForegroundLayer = styled.section`
   background-color: rgba(107, 107, 107, 0.5);
   display: flex;
   padding: 0 5%;
-  form{
+  form {
     background-color: white;
     width: 45%;
     margin: 12% 50px 50px 50px;
     padding: 100px 50px 50px 50px;
     //border-radius: 20px;
-    box-shadow: 5px 10px 5px 0px rgba(0,0,0,0.25);
--webkit-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.25);
--moz-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.25);
-    .titleHolder{
+    box-shadow: 5px 10px 5px 0px rgba(0, 0, 0, 0.25);
+    -webkit-box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.25);
+    .titleHolder {
       display: flex;
       justify-content: flex-start;
       align-items: flex-start;
       padding: 0;
-      img{
-      width: 100px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-right: 10px;
+      img {
+        width: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 10px;
       }
-      h1{
+      h1 {
         text-align: left;
-        font-family:'Courier New', Courier, monospace;
+        font-family: 'Courier New', Courier, monospace;
         font-size: 50px;
         font-weight: bolder;
       }
     }
-    .des{
+    .des {
       margin-top: 20px;
-      color: rgba(0,0,0,0.5);
+      color: rgba(0, 0, 0, 0.5);
       font-weight: 100;
       font-style: italic;
       font-size: 16px;
       width: 60%;
     }
-    .inputHolder{
+    .inputHolder {
       display: flex;
       justify-content: space-between;
       margin-top: 20px;
       margin-bottom: 20px;
-      input{
+      input {
         width: 48%;
         height: 35px;
         border-radius: 5px;
         padding-left: 10px;
-        &:focus
-        {
-          color: rgba(0,0,0,0.5);
+        &:focus {
+          color: rgba(0, 0, 0, 0.5);
           outline: none;
           background-color: none;
-          border-bottom:#E8AA0C solid 3px ;
+          border-bottom: #e8aa0c solid 3px;
         }
       }
-      .nameInput{
-        border: #E8AA0C solid 1px;
-        color: #E8AA0C;
-        ::placeholder{
-        font-family: 'Courier New', Courier, monospace;
-        color: #E8AA0C;
-        font-weight: lighter;
+      .nameInput {
+        border: #e8aa0c solid 1px;
+        color: #e8aa0c;
+        ::placeholder {
+          font-family: 'Courier New', Courier, monospace;
+          color: #e8aa0c;
+          font-weight: lighter;
         }
       }
-      .emailInput{
+      .emailInput {
         border: black solid 1px;
       }
     }
-    textarea{
-      background-color: rgba(232, 170, 12,0.1);
-    border: none;
-    border-radius: 10px;
-    width: 100%;
-    height: 200px;
-    padding: 10px 2%;
-    font-size: 16px;
-    font-weight: lighter;
-    resize: none;
-    ::placeholder{
-      font-family: 'Courier New', Courier, monospace;
-      color: #E8AA0C;
+    textarea {
+      background-color: rgba(232, 170, 12, 0.1);
+      border: none;
+      border-radius: 10px;
+      width: 100%;
+      height: 200px;
+      padding: 10px 2%;
+      font-size: 16px;
       font-weight: lighter;
+      resize: none;
+      ::placeholder {
+        font-family: 'Courier New', Courier, monospace;
+        color: #e8aa0c;
+        font-weight: lighter;
+      }
+      &:focus {
+        color: rgba(0, 0, 0, 0.5);
+        outline: none;
+        background-color: none;
+        border-bottom: #e8aa0c solid 1px;
+      }
     }
-    &:focus
-    {
-      color: rgba(0,0,0,0.5);
-      outline: none;
-      background-color: none;
-      border-bottom:#E8AA0C solid 1px ;
-    }
-    }
-    .submitButton{
+    .submitButton {
       font-family: 'Courier New', Courier, monospace;
       margin-top: 40px;
-      background-color: rgba(0,0,0,0);
+      background-color: rgba(0, 0, 0, 0);
       color: black;
       border: black solid 3px;
-      display:flex;
-      margin-left: auto ;
+      display: flex;
+      margin-left: auto;
       margin-right: 0;
       padding: 5px 15px;
       font-size: 18px;
       font-weight: 700;
 
-  cursor: pointer;
-  &:hover{
-    background-color: black;
-    color:white;
-  }
+      cursor: pointer;
+      &:hover {
+        background-color: black;
+        color: white;
+      }
     }
   }
-  .leftPanel{
+  .leftPanel {
     position: relative;
     height: 100%;
     margin-left: 5%;
-    .logo{
+    .logo {
       width: 400px;
       display: flex;
       justify-content: center;
@@ -229,23 +246,24 @@ const ForegroundLayer = styled.section`
       margin-top: 40%;
     }
   }
-  .infoHolder{
-    background-color: #E8AA0C;
+  .infoHolder {
+    background-color: #e8aa0c;
     color: white;
     padding: 30px 50px 30px 50px;
     height: fit-content;
     margin-top: 10px;
     line-height: 1.5;
-    h2{
-      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    h2 {
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+        'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     }
-    p{
+    p {
       font-weight: 100;
-      font-family:'Courier New', Courier, monospace;
-      color: rgba(255,255,255,0.7)
+      font-family: 'Courier New', Courier, monospace;
+      color: rgba(255, 255, 255, 0.7);
     }
   }
-  @media screen and (max-width:1300px) {
+  @media screen and (max-width: 1300px) {
     padding: 0 50px;
   }
   @media screen and (max-width: 1100px) {
@@ -253,14 +271,13 @@ const ForegroundLayer = styled.section`
     display: flex;
     justify-content: center;
     //background-color: aqua;
-    form{
+    form {
       width: 65%;
       margin-left: auto;
       margin-right: auto;
       margin-bottom: 0;
     }
-    .leftPanel
-    {
+    .leftPanel {
       width: 65%;
       margin-left: auto;
       margin-right: auto;
@@ -270,99 +287,99 @@ const ForegroundLayer = styled.section`
       align-items: center;
       margin-bottom: 50px;
       //  background-color: aliceblue;
-    .logo{
-      display: none;
-    }
-    .infoHolder{
-      width: 100%;
-    }
+      .logo {
+        display: none;
+      }
+      .infoHolder {
+        width: 100%;
+      }
     }
   }
-  @media screen and (max-width: 900px){
-    form{
+  @media screen and (max-width: 900px) {
+    form {
       width: 75%;
     }
-    .leftPanel{
+    .leftPanel {
       width: 75%;
     }
-  } 
-  @media screen and (max-width: 750px){
-    form{
+  }
+  @media screen and (max-width: 750px) {
+    form {
       width: 85%;
     }
-    .leftPanel{
+    .leftPanel {
       width: 85%;
     }
-  } 
-  @media screen and (max-width: 650px){
-    form{
+  }
+  @media screen and (max-width: 650px) {
+    form {
       width: 95%;
     }
-    .leftPanel{
+    .leftPanel {
       width: 95%;
-      .infoHolder{
-        h2{
+      .infoHolder {
+        h2 {
           display: none;
         }
       }
     }
-  } 
-  @media screen and (max-width: 600px){
+  }
+  @media screen and (max-width: 600px) {
     padding: 0;
     align-items: center;
-    form{
+    form {
       margin: 0;
       width: 100%;
-      .des{
+      .des {
         width: 90%;
       }
-      .inputHolder{
+      .inputHolder {
         display: flex;
-        flex-direction:column;
-        
+        flex-direction: column;
+
         width: 100%;
-        input{
+        input {
           width: 100%;
           margin-top: 10px;
         }
       }
     }
-    .leftPanel{
+    .leftPanel {
       height: fit-content;
       padding: 0;
       margin: 0;
       width: 100%;
-      .infoHolder{
+      .infoHolder {
         background-color: white;
         margin: 0;
         padding: 10px 0;
-        h2{
+        h2 {
           display: none;
         }
-        p{
+        p {
           display: none;
         }
       }
     }
-  } 
-  @media screen and (max-width: 600px){
-    form{
-    padding: 100px 30px 20px 30px;
+  }
+  @media screen and (max-width: 600px) {
+    form {
+      padding: 100px 30px 20px 30px;
     }
   }
 `
 const SocialList = styled.section`
-margin-top:20px;
-display: flex;
-img{
-  width: 40px;
-  cursor: pointer;
-  margin-right: 10px;
-}
-@media screen and (max-width: 600px){
-  margin-top: 0;
-  justify-content: center;
-}
+  margin-top: 20px;
+  display: flex;
+  img {
+    width: 40px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  @media screen and (max-width: 600px) {
+    margin-top: 0;
+    justify-content: center;
+  }
 `
 
 export default ContactUs

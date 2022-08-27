@@ -13,17 +13,25 @@ const Footer = () => {
       <ContentHolder>
         <div className='footerBox'>
           <h1 className='boxTitle'>Contact Us</h1>
-          <p className='boxDescription'> If you have any concern or feedback, click below to send your message to our team. Our sweet honey team will reach you asap! </p>
+          <p className='boxDescription'>
+            {' '}
+            If you have any concern or feedback, click below to send your
+            message to our team. Our sweet honey team will reach you asap!{' '}
+          </p>
           <div className='button'>Contact Us</div>
         </div>
         <div className='footerBox'>
           <h1 className='boxTitle'>About us</h1>
           <h1 className='boxSubTitle'>We are hardworking bees!</h1>
-          <p className='boxDescription'>Beelancers provide a platform that connects freelancers and business owners. This project is developed by 6 IT student of RMIT University Vietnam.</p>
+          <p className='boxDescription'>
+            Beelancers provide a platform that connects freelancers and business
+            owners. This project is developed by 6 IT student of RMIT University
+            Vietnam.
+          </p>
           <div className='button'> Read more</div>
         </div>
         <div className='footerBox'>
-        <img src={beelancer_logo} alt="Beelancer logo" className='Logo' />
+          <img src={beelancer_logo} alt='Beelancer logo' className='Logo' />
         </div>
       </ContentHolder>
       <Separator>

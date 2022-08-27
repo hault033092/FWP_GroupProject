@@ -7,6 +7,7 @@ import Home from './Home'
 import SignIn from './SignIn'
 import SignUp from './SignUp'
 import JobPost from './JobPost'
+import ContactUs from './ContactUs'
 
 const Pages = () => {
   return (
@@ -18,6 +19,7 @@ const Pages = () => {
       <Route path='/FindFreelancer' element={<FindFreelancer />} />
       <Route path='/BeFreelancer' element={<BeFreelancer />} />
       <Route path='/JobPost' element={<JobPost />} />
+      <Route path='/ContactUs' element={<ContactUs />} />
     </Routes>
   )
 }
