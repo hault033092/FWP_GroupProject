@@ -1,11 +1,11 @@
 import React from 'react'
 
-import beelancer_logo from '../assets/beelancer_logo.svg'
-import discord from '../assets/discord.svg'
-import facebook from '../assets/facebook.svg'
-import github from '../assets/github.svg'
-import google from '../assets/google.svg'
-import twitter from '../assets/twitter.svg'
+import beelancer_logo from '../assets/svg/logo.svg'
+import discord from '../assets/svg/discord.svg'
+import facebook from '../assets/svg/facebook.svg'
+import github from '../assets/svg/github.svg'
+import google from '../assets/svg/google.svg'
+import twitter from '../assets/svg/twitter.svg'
 import styled from 'styled-components'
 const Footer = () => {
   return (
@@ -51,6 +51,7 @@ const Footer = () => {
 
 export default Footer
 const Section = styled.section`
+
     position: relative;
     background-color: #E8AA0C;
     height: 300px;
