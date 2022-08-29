@@ -4,12 +4,13 @@ import Header from './components/Header'
 import Pages from './pages/Pages'
 import ContactUs from './pages/ContactUs'
 import FreelancerProfile from './pages/FreelancerProfile'
-import ProfileSetting from './pages/ProfileSetting'
+import ClientProfile from './pages/ClientProfile'
 import JobPost from './pages/JobPost'
 const App = () => {
   return (
     <>
-    <ProfileSetting></ProfileSetting>
+      <ClientProfile />
+      {/* <FreelancerProfile /> */}
     </>
   )
 }
