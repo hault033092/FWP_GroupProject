@@ -38,21 +38,7 @@
     text-transform:uppercase;
     padding-bottom: 10px;
 }
-.footerBox .button{
-    padding: 6px 14px;
-    background-color: #222222;
-    color: white;
-    width: fit-content;
-    border: 3px solid #222222;
-    border-radius: 20px;
-    text-align: center;
-    font-size: 14px;
-    cursor: pointer;
-}
-.footerBox .button:hover{
-    background-color: transparent;
-    color: #222222;
-}
+
 .footerBox .Logo{
     width: 200px;
     height: auto;
@@ -61,36 +47,7 @@
     margin: auto;
     cursor: pointer;
 }
-.separator{
-    margin-top: 10px;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 50px;
-    background-color: rgba(34, 34, 34, 0.2);
-    display: flex;
-    justify-content: space-between;
-    align-content: center;
-    vertical-align: middle;
 
-    padding: 4px 10%;
-}
-.separator .socialList{
-    display: flex;
-}
-.separator .socialConnect{
-    width: 30px;
-    height: auto;
-    margin: 0 5px;
-    cursor: pointer;
-}
-.separator .copyRight{
-    margin: auto 0;
-    font-weight: 200;
-    font-size: 14px;
-    color: rgba(255,255,255, 0.8);
-    height: fit-content;
-}
 @media only screen and (max-width: 1200px) {
     .section{
         height: 400px;
@@ -119,22 +76,10 @@
         padding: 0 20%;
         margin: 10px 0 ;
     }
-    .separator
-    {
-        padding: 4px 5%;
-    }
 }
 @media only screen and (max-width: 430px) 
 {
     .section{
         height: 650px;
-    }
-    .separator
-    {
-        padding: 4px 1%;
-    }
-    .socialConnect{
-        width: 20px;
-        margin: 0 2px;
     }
 }
