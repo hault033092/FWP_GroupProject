@@ -6,11 +6,18 @@ import ContactUs from './pages/ContactUs'
 import FreelancerProfile from './pages/FreelancerProfile'
 import ClientProfile from './pages/ClientProfile'
 import JobPost from './pages/JobPost'
+import Rating from './pages/Rating'
+
 const App = () => {
   return (
     <>
-      <ClientProfile />
+      <Header />
+      {/* <ClientProfile /> */}
       {/* <FreelancerProfile /> */}
+      <Pages />
+      {/* <Rating /> */}
+      {/* <JobPost /> */}
+      <Footer />
     </>
   )
 }
