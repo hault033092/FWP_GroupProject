@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
+import { useRef } from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import styled from 'styled-components'
@@ -6,6 +7,29 @@ import styled from 'styled-components'
 import beelancer_logo from '../assets/svg/logo.svg'
 import Avatar from '../assets/images/Avatar.png'
 export default function ProfileSetting() {
+  //avatar profile 
+    const [image,setImage] = useState(null)
+    const [preview,setPreview] = useState(Avatar)
+    const fileInputRef = useRef(null)
+    useEffect(()=>{
+      if(image){
+        const render = new FileReader()
+        render.onloadend = () =>{
+          setPreview(render.result)
+        };
+        render.readAsDataURL(image)
+      }
+      else{
+       setPreview(Avatar)
+      }
+    })
+    //review
+    const [reviewShown,setReviewShown] = useState(false);
+    const handleReviewClick = event =>{
+      //toggle show state
+      setReviewShown(!reviewShown)
+    }
+    //skill
     const [skills, setSkills] = useState([])
     const [skillInput, setSkillInput] = useState('')
     //
@@ -36,7 +60,13 @@ export default function ProfileSetting() {
     event.preventDefault()
   }
   return (
-    <div>
+    <div style={
+      {
+        position: "relative",
+        width: "100%",
+      
+      }
+    }>
         <Header></Header>
         <Body>
         <Logo>
@@ -46,8 +76,21 @@ export default function ProfileSetting() {
         <Form>
             <form action='' onSubmit={handleSubmit}>
             <div className='avatar'>
-                <img src={Avatar} alt="UserAvatar" />
-                <div className='overlay'></div>
+                <img src={preview} alt="UserAvatar" />
+                <button className='overlay'
+                            onClick= {()=>{fileInputRef.current.click()}}
+                ></button>
+            <input type="file" name='images'accept='image/png,image/jpeg,image/webp' ref = {fileInputRef}
+            onChange = {(event) =>{
+              const file = event.target.files[0]
+              if(file)
+              {
+                setImage(file)
+              }
+              else{
+                setImage(Avatar)
+              }
+            }} />
             </div>
 
             <TextBox>
@@ -63,7 +106,7 @@ export default function ProfileSetting() {
             <TextBox>
             <div className='reviewTitle'>
             <h2>Client reviews</h2>
-            <h3>✎</h3>
+            <button onClick={()=>{handleReviewClick()}}>✎</button>
             </div>
             <p className='note'>Select a review you like the most</p>
             <div className='review'>
@@ -156,6 +199,35 @@ export default function ProfileSetting() {
           </form>
         </Form>
         </Body>
+        {reviewShown &&(
+        <ReviewSelector>
+          <div className='Panel'>
+                <button className='cancel' onClick={()=>handleReviewClick()}>
+                ╳
+                </button>
+                <h1>Select a review</h1>
+                <p>Your client will see the review, let people know how you have done your work.</p>
+                <div className='reviewHolder'>
+                  <div className='reviewBox'>
+                    <h4>UserName</h4>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    <button>Select</button>
+                  </div>
+                  <div className='reviewBox'>
+                    <h4>UserName</h4>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    <button>Select</button>
+                  </div>
+                  <div className='reviewBox'>
+                    <h4>UserName</h4>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    <button>Select</button>
+                  </div>
+                </div>
+
+          </div>
+        </ReviewSelector>
+        )}
         <Footer></Footer>
     </div>
   )
@@ -183,6 +255,20 @@ const Logo = styled.section`
         font-size: 50px;
         text-transform: uppercase;
         color: rgba(255,255,255,0.4);
+    }
+    @media screen and (max-width:850px) {
+      h1{
+        font-size: 40px;
+
+      }
+    }
+    @media screen and (max-width:700px) {
+      h1{
+        width: 100%;
+        text-align: center;
+        font-size: 30px;
+
+      }
     }
 `
 const Form = styled.section`
@@ -214,6 +300,12 @@ const Form = styled.section`
             background-color: rgba(0, 0, 0, 0.25);
             border-radius: 50%;
             display: none;
+            cursor: pointer;
+            outline: #e8aa0c;
+            border: #e8aa0c solid 2px;
+        }
+        input{
+          display: none;
         }
         cursor: pointer;
         &:hover{
@@ -243,6 +335,22 @@ const Form = styled.section`
             background-color: transparent;
             color: #e8aa0c;
         }
+    
+    }
+    @media screen and (max-width:1300px) {
+      width: 70%;
+    }   
+     @media screen and (max-width:1150px) {
+      width: 80%;
+      padding: 50px 50px;
+    }
+    @media screen and (max-width:600px) {
+      width: 100%;
+      padding: 50px 50px;
+      box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+   
     }
 `
 const TextBox = styled.section`
@@ -292,10 +400,11 @@ const TextBox = styled.section`
             h2{
 
             }
-            h3{
+            button{
                 background-color: rgba(232, 170, 12, 0.4);
                 color: white;
                 border-radius: 50%;
+                border: #e8aa0c;
                 width: 30px;
                 height: 30px;
                 text-align: center;
@@ -381,6 +490,15 @@ const TextBox = styled.section`
     }
     //background-color: bisque;
     margin-bottom: 10px;
+    @media screen and (max-width:1150px) {  
+      padding: 0px 10%;
+    }
+    @media screen and (max-width:700px) {  
+      padding: 0px 5%;
+    }
+    @media screen and (max-width:500px) {  
+      padding: 0px 0%;
+    }
 `
 const SkillStyle = styled.section`
   width: fit-content;
@@ -408,5 +526,147 @@ const SkillStyle = styled.section`
     align-items: center;
     color: #e8aa0c;
     cursor: pointer;
+  }
+`
+const ReviewSelector = styled.section`
+  position: fixed;
+  top: 0;
+  background-color: rgba(0,0,0,0.5);
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .Panel{
+    background-color: white;
+    position: relative;
+    width: 70%;
+    height: fit-content;
+    padding: 50px 100px;
+    border-radius: 30px;
+  }
+  .cancel{
+    position: absolute;
+    top: -10px;
+    right:-20px;
+    background-color: #e8aa0c;
+    border: #e8aa0c solid 2px;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 10px;
+    font-weight: 900;
+    cursor:pointer;
+    &:hover{
+      background-color: transparent;
+      color: #e8aa0c;
+    }
+  }
+  h1{
+    color: #e8aa0c;
+  }
+  p{
+    font-style: italic;
+    font-size: 14px;
+    margin-left: 5px;
+  }
+  .reviewHolder{
+    position: relative;
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    .reviewBox{
+      position: relative;
+      width: 30%;
+      p{
+        font-style: normal;
+        font-size: 12px;
+        font-weight: 100;
+      }
+      button{
+        background-color: #e8aa0c;
+        border: #e8aa0c solid 2px;
+        color:white;
+        padding: 5px 20px;
+        font-size: 16px;
+        margin-top: 10px;
+        font-weight: 600;
+        cursor: pointer;
+        &:hover{
+          color: #e8aa0c;
+          background-color: transparent;
+        }
+      }
+    }
+    .reviewBox:nth-child(odd)
+    {
+      &::before
+      {
+        content: "";
+        position: absolute;
+        left:-10px;
+        height: 100px;
+        width: 3px;
+        background-color: rgba(232, 170, 12, 0.6)
+      }
+
+    }
+    .reviewBox:nth-child(even)
+    {
+      &::before
+      {
+        content: "";
+        position: absolute;
+        left:-10px;
+        height: 100px;
+        width: 3px;
+        background-color: rgba(0, 0, 0, 0.6)
+      }
+
+    }
+  }
+  @media screen and (max-width: 1300px){
+    .Panel{
+      width: 80%;
+    }
+  }
+  @media screen and (max-width: 1150px){
+    .Panel{
+      width: 90%;
+    }
+  }
+  @media screen and (max-width: 1000px){
+    .reviewHolder{
+      flex-direction: column;
+      .reviewBox{
+      width: 100%;
+      margin-bottom: 10px;
+      p{
+        font-size: 12px;
+      }
+      }
+    }
+
+  }
+  @media screen and (max-width: 800px){
+    .Panel{
+      padding: 50px 50px;
+    }
+
+  }
+  @media screen and (max-width: 600px){
+    .Panel{
+      padding: 50px 50px;
+      width: 100%;
+      border-radius: 0;
+      .cancel{
+        top: 10px;
+        right: 10px;
+      }
+    }
+
   }
 `
