@@ -6,9 +6,12 @@ import FindFreelancer from './FindFreelancer'
 import Home from './Home'
 import SignIn from './SignIn'
 import SignUp from './SignUp'
+import ForgotPassword from './ForgotPassword'
+
 import JobPost from './JobPost'
 import ContactUs from './ContactUs'
 import Rating from './Rating'
+
 
 const Pages = () => {
   return (
@@ -17,6 +20,7 @@ const Pages = () => {
       <Route path='/AboutUs' element={<AboutUs />} />
       <Route path='/SignIn' element={<SignIn />} />
       <Route path='/SignUp' element={<SignUp />} />
+      <Route path='/ForgotPassword' element={<ForgotPassword/>}/>
       <Route path='/FindFreelancer' element={<FindFreelancer />} />
       <Route path='/BeFreelancer' element={<BeFreelancer />} />
       <Route path='/JobPost' element={<JobPost />} />
