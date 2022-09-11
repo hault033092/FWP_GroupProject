@@ -53,6 +53,11 @@ export default function FreelancerProfile() {
                     </div>
                 </div>
             </RightPanel>
+            <Setting>
+            <div>
+            <p>✎</p> 
+                </div>
+            </Setting>
             </ContentBox>
         </Body>
         <Footer></Footer>
@@ -91,12 +96,12 @@ const Body = styled.section`
     }
     @media screen and (max-width: 1000px){
         .Background{
-            height: 750px;
+            height: 950px;
         }
     }
     @media screen and (max-width:850px){
         .Background{
-            height: 900px;
+            height: 950px;
         } 
     }
     @media screen and (max-width:700px){
@@ -130,6 +135,7 @@ const ContentBox = styled.section`
     @media screen and (max-width:850px) {
         flex-direction: column;
         padding-bottom: 60px;
+        flex-wrap: wrap-reverse;
     }
     @media screen and (max-width:700px) {
         padding: 50px 50px;
@@ -426,4 +432,33 @@ const RightPanel = styled.section`
             }
         }
     }
+`
+const Setting = styled.section`
+div{
+    border:rgba(232, 170, 12, 0.7) solid 2px ;
+    background-color: rgba(232, 170, 12, 0.7);
+    padding: 10px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    &:hover{
+        background-color: transparent;
+        p{
+            color: rgba(232, 170, 12, 1);
+        }
+    }
+}
+p{
+    color: white;
+    font-size:20px;
+}
+@media screen and (max-width:850px){
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
 `

@@ -9,7 +9,8 @@ import JobPost from './pages/JobPost'
 const App = () => {
   return (
     <>
-      <ClientProfile />
+      <FreelancerProfile />
+
       {/* <FreelancerProfile /> */}
     </>
   )
