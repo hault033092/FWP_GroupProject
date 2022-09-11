@@ -14,11 +14,17 @@ import Rating from './pages/Rating'
 const App = () => {
   return (
     <>
+
+      
+
+      
+
       <Header />
 
       <Pages />
     
       <Footer />
+
     </>
   )
 }
