@@ -13,24 +13,24 @@ const SignIn = () => {
         <MainForm>
           <InputGroup>
             <Label htmlFor="email">Email</Label>
-            <InputField id="email" type="text" placeholder="Enter email address" isRequired></InputField>
+            <InputField id="email" type="email" placeholder="Enter email address" isRequired></InputField>
           </InputGroup>
           <InputGroup>
             <Label htmlFor="password">Password</Label>
-            <InputField id="password" type="text" placeholder="Enter password" isRequired></InputField>
+            <InputField id="password" type="password" placeholder="Enter password" isRequired></InputField>
           </InputGroup>
           <PasswordField>
             <RememberPassword>
               <CheckboxField id="forgot" type="checkbox"></CheckboxField>
               <CheckboxLabel htmlFor="forgot">Remember me</CheckboxLabel>
             </RememberPassword>
-            <RedirectLink to="/forgot-password">Forgot your password?</RedirectLink>
+            <RedirectLink to="/ForgotPassword">Forgot your password?</RedirectLink>
           </PasswordField>
         </MainForm>
         <SignInField>
           <SignInButton>Sign In</SignInButton>
           <SignUpField>
-            <Text>Join our Hive?</Text>
+            <Text>New to our Hive?</Text>
             <RedirectLink to="/SignUp">Sign Up</RedirectLink>
           </SignUpField>
         </SignInField>
@@ -55,7 +55,7 @@ const SignInContent = styled.div`
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
-  background-color: #E8AA0C66;
+  background-color: #FFFFFF;
   margin: 2rem 0;
   padding: 2rem 2rem;
   border-radius: 50%;
@@ -85,7 +85,7 @@ const MainForm = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  padding: 2rem 3rem 2rem 3rem;
+  padding: 3rem;
 
   @media screen and (max-width: 1199px) {
     padding: 1rem 0 2rem 0;
@@ -97,8 +97,13 @@ const Label = styled.label`
   top: -25%;
   left: 5%;
   font-weight: 500;
-  color: #000000;
-  background-color: #E8AA0C;
+  color: #E8AA0C;
+  background-color: #FFFFFF;
+
+  @media screen and (max-width: 1199px) {
+    font-size: 0.8rem;
+    top: -22.5%;
+  }
 `
 
 const CheckboxLabel = styled.label`
@@ -117,7 +122,7 @@ const InputField = styled.input`
   justify-content: center;
   padding: 1rem 1rem;
   border-radius: 1rem;
-  border: 0.2rem solid #E59F17;
+  border: 1px solid #E59F17;
   transition: 0.25s ease-in-out;
 
   &:focus {
@@ -150,7 +155,7 @@ const RememberPassword = styled.div`
 `
 
 const SignInField = styled.div`
-  width: 35%;
+  width: 40%;
   display: flex;
   justify-content: center;
   flex-direction: column;

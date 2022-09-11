@@ -28,7 +28,7 @@ const SignUp = () => {
             </InputGroup>
             <InputGroup>
               <Label htmlFor="email">Email</Label>
-              <InputField id="email" type="text" placeholder="Enter email address" maxlength="30" isRequired></InputField>
+              <InputField id="email" type="email" placeholder="Enter email address" maxlength="30" isRequired></InputField>
             </InputGroup>
             <InputGroup>
               <Label htmlFor="phone">Phone</Label>
@@ -138,22 +138,26 @@ const Button = styled.button`
   &.active {
     background-color: #E59F17;
   }
-
-  @media screen and (max-width: 1199px) {
-    font-size: 0.8rem;
-  }
 `
   
 const FreelancerButton = styled(Button)`
   border-top-left-radius: 2rem;
   border-bottom-left-radius: 2rem;
   background-color: #F5F5F5;
+
+  @media screen and (max-width: 1199px) {
+    font-size: 0.8rem;
+  }
 `
 
 const EmployerButton = styled(Button)`  
   border-top-right-radius: 2rem;
   border-bottom-right-radius: 2rem;
   background-color: #F5F5F5;
+
+  @media screen and (max-width: 1199px) {
+    font-size: 0.8rem;
+  }
 `
 
 const SignUpButton = styled(Button)`
@@ -193,11 +197,12 @@ const Label = styled.label`
 
   @media screen and (max-width: 1199px) {
     font-size: 0.8rem;
+    top: -22.5%;
   }
 `
 
 const AreaLabel = styled(Label)`
-  top: -12.5%;
+  top: -10%;
 `
 
 const InputField = styled.input`
