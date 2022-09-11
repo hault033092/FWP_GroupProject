@@ -121,10 +121,10 @@ const Header = () => {
             <MenuItem to='/'>Home</MenuItem>
             <MenuItem to='/find-freelancer'>Find A Freelancer</MenuItem>
             <MenuItem to='/become-freelancer'>Become A Freelancer</MenuItem>
-            <MenuItem to='/rating'>Rating</MenuItem>
             <MenuItem to='/contactus'>Contact Us</MenuItem>
             <MenuItem to='/aboutus'>About Us</MenuItem>
             <MenuItem to='/faq'>FAQs</MenuItem>
+            <MenuItem to='/'>FAQs</MenuItem>
           </Menu>
           <Button
             backgroundColor='transparent'

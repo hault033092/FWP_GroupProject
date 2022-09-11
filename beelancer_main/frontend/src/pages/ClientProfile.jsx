@@ -35,7 +35,6 @@ export default function ClientProfile() {
   }
   return (
     <div>
-      <Header></Header>
       <Body>
         <Logo>
           <img src={beelancer_logo} alt='logo' />
@@ -172,7 +171,6 @@ export default function ClientProfile() {
           </form>
         </Form>
       </Body>
-      <Footer></Footer>
     </div>
   )
 }
