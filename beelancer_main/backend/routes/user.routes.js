@@ -2,7 +2,7 @@ const router = require('express').Router()
 const User = require('../model/user.model')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
-const { registerValidation, loginValidation } = require('../validation')
+const { registerValidation, loginValidation } = require('../helper/validation')
 
 // Create a user with validation
 router.post('/register', async (req, res) => {
@@ -70,7 +70,7 @@ router.get('/getUsers', async (req, res) => {
 })
 
 //Get user by a specific ID
-router.get('/:userId', async (req, res) => {
+router.get('/getUser/:userId', async (req, res) => {
   try {
     const user = await User.findById(req.params.userId)
     res.json(user)

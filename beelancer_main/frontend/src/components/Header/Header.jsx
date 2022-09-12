@@ -7,8 +7,8 @@ import IconButton from '@mui/material/IconButton'
 import SearchIcon from '@mui/icons-material/Search'
 import InputBase from '@mui/material/InputBase'
 import Paper from '@mui/material/Paper'
-import '../assets/css/grid.css'
-import '../assets/css/header.css'
+import 'grid.css'
+import 'Header.css'
 
 export const Component = styled.div`
   width: 100%;

@@ -86,7 +86,7 @@ const LogoImage = styled.img`
 
 const Heading = styled.h1`
   font-size: 2rem;
-  font-weigth: 700;
+  font-weight: 700;
   text-align: center;
   text-transform: uppercase;
 `
