@@ -156,26 +156,29 @@ const Header = () => {
               <Menu>
                 <MenuItem to='/joblist'>Job List</MenuItem>
                 <MenuItem to='/rating'>Rating</MenuItem>
-                <MenuItem to='/findfreelancer'>Find A Freelancer</MenuItem>
-                <MenuItem to='/becomefreelancer'>Become A Freelancer</MenuItem>
                 <MenuItem to='/AboutUs'>About Us</MenuItem>
               </Menu>
-              <Button
-                backgroundColor='transparent'
-                color='#000000'
-                borderRadius='10px'
-                borderWidth='2px'
-              >
-                Sign In
-              </Button>
-              <Button
-                backgroundColor='#000000'
-                color='#ffffff'
-                borderRadius='10px'
-                borderWidth='2px'
-              >
-                Sign In
-              </Button>
+              <MenuItem to='/signin'>
+                <Button
+                  backgroundColor='transparent'
+                  color='#000000'
+                  borderRadius='10px'
+                  borderWidth='2px'
+                >
+                  Sign In
+                </Button>
+              </MenuItem>
+
+              <MenuItem to='/signup'>
+                <Button
+                  backgroundColor='#000000'
+                  color='#ffffff'
+                  borderRadius='10px'
+                  borderWidth='2px'
+                >
+                  Sign Up
+                </Button>
+              </MenuItem>
             </Right>
           </Component>
         </div>
