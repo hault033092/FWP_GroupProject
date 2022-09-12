@@ -8,12 +8,14 @@ import ForgotPassword from './ForgotPassword'
 import JobPost from './JobPost'
 import ContactUs from './ContactUs'
 import Rating from './Rating'
+import JobList from './JobList/JobList'
 
 const Pages = () => {
   return (
     <Routes>
       <Route path='/' element={<Home />} />
       <Route path='/AboutUs' element={<AboutUs />} />
+      <Route path='/JobList' element={<JobList />} />
       <Route path='/SignIn' element={<SignIn />} />
       <Route path='/SignUp' element={<SignUp />} />
       <Route path='/ForgotPassword' element={<ForgotPassword />} />

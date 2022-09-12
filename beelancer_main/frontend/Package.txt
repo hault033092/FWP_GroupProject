@@ -1,4 +1,4 @@
 /// 
-npm install @mui/material @emotion/react @emotion/styled react-fast-marquee --save
+npm install @mui/material @emotion/react @emotion/styled react-fast-marquee react-paginate --save
 ///
 
