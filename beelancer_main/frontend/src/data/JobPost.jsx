@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
-const jobPost = () => {
+const JobPost = () => {
   return <div>jobPost</div>
 }
 
-export default jobPost
+export default JobPost

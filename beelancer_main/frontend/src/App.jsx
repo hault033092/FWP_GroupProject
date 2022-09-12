@@ -14,7 +14,7 @@ import Rating from './pages/Rating'
 const App = () => {
   return (
     <>
-      <FreelancerProfile />
+      {/* <FreelancerProfile /> */}
       <Header />
       <Pages />
       <Footer />

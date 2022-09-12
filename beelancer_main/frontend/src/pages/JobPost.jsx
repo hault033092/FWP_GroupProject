@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
+
 import styled from 'styled-components'
 
 import { BrowserRouter as Router, Routes, Link, Route } from 'react-router-dom'
@@ -41,11 +40,10 @@ const JobPost = () => {
   }
   // add skill on button enter
   const addASkill = (event) => {
-    if(skillInput == "")
-    {
+    if (skillInput == '') {
       return
     }
-    setSkillInput("")
+    setSkillInput('')
     event.preventDefault()
     setSkills((previous) => previous.concat(skillInput))
   }
@@ -55,7 +53,7 @@ const JobPost = () => {
     event.preventDefault()
   }
   return (
-    <div style={{ backgroundColor:' rgba(232, 170, 12, 0.5)' }}>
+    <div style={{ backgroundColor: ' rgba(232, 170, 12, 0.5)' }}>
       <BackgroundLayer />
       <PostForm>
         <img className='logo' src={beelancer_logo} alt='beelancer logo' />
@@ -283,7 +281,7 @@ const PostForm = styled.section`
 `
 const BackgroundLayer = styled.section`
   width: 100%;
-  background-color:  rgba(232, 170, 12, 0.5);
+  background-color: rgba(232, 170, 12, 0.5);
   position: absolute;
   height: 700px;
   z-index: 1;

@@ -1,14 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
-import LogoPng from '../assets/svg/logo.svg'
-import SearchSvg from '../assets/svg/search.svg'
+import LogoPng from '../../assets/svg/logo.svg'
+import SearchSvg from '../../assets/svg/search.svg'
 import { NavLink } from 'react-router-dom'
 import IconButton from '@mui/material/IconButton'
 import SearchIcon from '@mui/icons-material/Search'
 import InputBase from '@mui/material/InputBase'
 import Paper from '@mui/material/Paper'
-import 'grid.css'
-import 'Header.css'
+import './grid.css'
+import './Header.css'
 
 export const Component = styled.div`
   width: 100%;
