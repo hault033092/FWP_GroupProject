@@ -2,36 +2,48 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
-import Logo from '../assets/beelancer_logo.svg'
+import Logo from '../assets/svg/logo.svg'
 
 const SignIn = () => {
   return (
     <SignInContainer>
       <SignInContent>
-        <LogoImage src={Logo} alt="beelancer logo"></LogoImage>
+        <LogoImage src={Logo} alt='beelancer logo'></LogoImage>
         <Heading>Beelancer Login</Heading>
         <MainForm>
           <InputGroup>
-            <Label htmlFor="email">Email</Label>
-            <InputField id="email" type="email" placeholder="Enter email address" isRequired></InputField>
+            <Label htmlFor='email'>Email</Label>
+            <InputField
+              id='email'
+              type='email'
+              placeholder='Enter email address'
+              isRequired
+            ></InputField>
           </InputGroup>
           <InputGroup>
-            <Label htmlFor="password">Password</Label>
-            <InputField id="password" type="password" placeholder="Enter password" isRequired></InputField>
+            <Label htmlFor='password'>Password</Label>
+            <InputField
+              id='password'
+              type='password'
+              placeholder='Enter password'
+              isRequired
+            ></InputField>
           </InputGroup>
           <PasswordField>
             <RememberPassword>
-              <CheckboxField id="forgot" type="checkbox"></CheckboxField>
-              <CheckboxLabel htmlFor="forgot">Remember me</CheckboxLabel>
+              <CheckboxField id='forgot' type='checkbox'></CheckboxField>
+              <CheckboxLabel htmlFor='forgot'>Remember me</CheckboxLabel>
             </RememberPassword>
-            <RedirectLink to="/ForgotPassword">Forgot your password?</RedirectLink>
+            <RedirectLink to='/ForgotPassword'>
+              Forgot your password?
+            </RedirectLink>
           </PasswordField>
         </MainForm>
         <SignInField>
           <SignInButton>Sign In</SignInButton>
           <SignUpField>
             <Text>New to our Hive?</Text>
-            <RedirectLink to="/SignUp">Sign Up</RedirectLink>
+            <RedirectLink to='/SignUp'>Sign Up</RedirectLink>
           </SignUpField>
         </SignInField>
       </SignInContent>
@@ -45,7 +57,7 @@ const SignInContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
 `
 
 const SignInContent = styled.div`
@@ -55,7 +67,7 @@ const SignInContent = styled.div`
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   margin: 2rem 0;
   padding: 2rem 2rem;
   border-radius: 50%;
@@ -97,8 +109,8 @@ const Label = styled.label`
   top: -25%;
   left: 5%;
   font-weight: 500;
-  color: #E8AA0C;
-  background-color: #FFFFFF;
+  color: #e8aa0c;
+  background-color: #ffffff;
 
   @media screen and (max-width: 1199px) {
     font-size: 0.8rem;
@@ -122,7 +134,7 @@ const InputField = styled.input`
   justify-content: center;
   padding: 1rem 1rem;
   border-radius: 1rem;
-  border: 1px solid #E59F17;
+  border: 1px solid #e59f17;
   transition: 0.25s ease-in-out;
 
   &:focus {
@@ -179,8 +191,8 @@ const SignInButton = styled.button`
   text-align: center;
   text-transform: uppercase;
   padding: 1rem 2rem;
-  color: #FFFFFF;
-  background-color: #E59F17;
+  color: #ffffff;
+  background-color: #e59f17;
   transition: 0.25s ease-in-out;
 
   &:hover {
@@ -197,4 +209,4 @@ const RedirectLink = styled(Link)`
   color: dodgerblue;
 `
 
-export default SignIn;
+export default SignIn

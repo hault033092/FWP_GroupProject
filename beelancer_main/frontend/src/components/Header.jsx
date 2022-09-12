@@ -124,24 +124,27 @@ const Header = () => {
             <MenuItem to='/contactus'>Contact Us</MenuItem>
             <MenuItem to='/aboutus'>About Us</MenuItem>
             <MenuItem to='/faq'>FAQs</MenuItem>
-            <MenuItem to='/'>FAQs</MenuItem>
           </Menu>
-          <Button
-            backgroundColor='transparent'
-            color='#000000'
-            borderRadius='10px'
-            borderWidth='2px'
-          >
-            Sign In
-          </Button>
-          <Button
-            backgroundColor='#000000'
-            color='#ffffff'
-            borderRadius='10px'
-            borderWidth='2px'
-          >
-            Sign Up
-          </Button>
+          <MenuItem to='/signin'>
+            <Button
+              backgroundColor='transparent'
+              color='#000000'
+              borderRadius='10px'
+              borderWidth='2px'
+            >
+              Sign In
+            </Button>
+          </MenuItem>
+          <MenuItem to='signup'>
+            <Button
+              backgroundColor='#000000'
+              color='#ffffff'
+              borderRadius='10px'
+              borderWidth='2px'
+            >
+              Sign Up
+            </Button>
+          </MenuItem>
         </Right>
       </Component>
     </div>

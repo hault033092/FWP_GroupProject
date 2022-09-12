@@ -14,19 +14,12 @@ import Rating from './pages/Rating'
 const App = () => {
   return (
     <>
-
-      
-
-      
-
+      <FreelancerProfile />
       <Header />
-
       <Pages />
-    
       <Footer />
-
     </>
   )
 }
 
-export default App;
+export default App

@@ -2,36 +2,51 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
-import Logo from '../assets/beelancer_logo.svg'
+import Logo from '../assets/svg/logo.svg'
 
 const ForgotPassword = () => {
   return (
     <ForgotPassContainer>
-        <ForgotPassContent>
-            <LogoImage src={Logo} alt="beelancer logo"></LogoImage>
-            <Heading>Reset password</Heading>
-            <MainForm>
-                <InputGroup>
-                    <Label htmlFor="email">Email Address</Label>
-                    <InputField id="email" type="email" placeholder="Enter your email" isRequired></InputField>
-                </InputGroup>
-                <InputGroup>
-                    <Label htmlFor="new-pass">New Password</Label>
-                    <InputField id="new-pass" type="password" placeholder="Enter new password" isRequired></InputField>
-                </InputGroup>
-                <InputGroup>
-                    <Label htmlFor="retype-pass">Retype Password</Label>
-                    <InputField id="retype-pass" type="password" placeholder="Re-type new password" isRequired></InputField>
-                </InputGroup>
-            </MainForm>
-            <SubmitField>
-                <SubmitButton>Confirm</SubmitButton>
-                <SignInField>
-                  <Text>Remembered?</Text>
-                  <RedirectLink to="/SignUp">Sign In</RedirectLink>
-                </SignInField>
-            </SubmitField>
-        </ForgotPassContent>
+      <ForgotPassContent>
+        <LogoImage src={Logo} alt='beelancer logo'></LogoImage>
+        <Heading>Reset password</Heading>
+        <MainForm>
+          <InputGroup>
+            <Label htmlFor='email'>Email Address</Label>
+            <InputField
+              id='email'
+              type='email'
+              placeholder='Enter your email'
+              isRequired
+            ></InputField>
+          </InputGroup>
+          <InputGroup>
+            <Label htmlFor='new-pass'>New Password</Label>
+            <InputField
+              id='new-pass'
+              type='password'
+              placeholder='Enter new password'
+              isRequired
+            ></InputField>
+          </InputGroup>
+          <InputGroup>
+            <Label htmlFor='retype-pass'>Retype Password</Label>
+            <InputField
+              id='retype-pass'
+              type='password'
+              placeholder='Re-type new password'
+              isRequired
+            ></InputField>
+          </InputGroup>
+        </MainForm>
+        <SubmitField>
+          <SubmitButton>Confirm</SubmitButton>
+          <SignInField>
+            <Text>Remembered?</Text>
+            <RedirectLink to='/SignUp'>Sign In</RedirectLink>
+          </SignInField>
+        </SubmitField>
+      </ForgotPassContent>
     </ForgotPassContainer>
   )
 }
@@ -42,7 +57,7 @@ const ForgotPassContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
 `
 
 const ForgotPassContent = styled.div`
@@ -52,7 +67,7 @@ const ForgotPassContent = styled.div`
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   margin: 2rem 0;
   padding: 2rem 2rem;
   border-radius: 50%;
@@ -101,7 +116,7 @@ const InputField = styled.input`
   justify-content: center;
   padding: 1rem 1rem;
   border-radius: 1rem;
-  border: 1px solid #E59F17;
+  border: 1px solid #e59f17;
   transition: 0.25s ease-in-out;
 
   &:focus {
@@ -114,8 +129,8 @@ const Label = styled.label`
   top: -25%;
   left: 5%;
   font-weight: 500;
-  color: #E59F17;
-  background-color: #FFFFFF;
+  color: #e59f17;
+  background-color: #ffffff;
 
   @media screen and (max-width: 1199px) {
     font-size: 0.8rem;
@@ -131,8 +146,8 @@ const SubmitButton = styled.button`
   text-align: center;
   text-transform: uppercase;
   padding: 1rem 2rem;
-  color: #FFFFFF;
-  background-color: #E59F17;
+  color: #ffffff;
+  background-color: #e59f17;
   transition: 0.25s ease-in-out;
 
   &:hover {
@@ -167,4 +182,4 @@ const RedirectLink = styled(Link)`
   color: dodgerblue;
 `
 
-export default ForgotPassword;
+export default ForgotPassword
