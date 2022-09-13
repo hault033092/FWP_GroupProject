@@ -1,0 +1,13 @@
+// User
+localhost:8080/api/user/getUsers
+localhost:8080/api/user/getUsers
+localhost:8080/api/user/getUsers
+localhost:8080/api/user/getUsers
+localhost:8080/api/user/getUsers
+
+// Post
+localhost:8080/api/jobPost/getPosts
+localhost:8080/api/jobPost/getPostById/:postId
+localhost:8080/api/jobPost/createPost
+localhost:8080/api/jobPost/deletePost/:postId
+localhost:8080/api/jobPost/updatePost/:postId

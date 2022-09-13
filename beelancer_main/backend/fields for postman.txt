@@ -1,0 +1,15 @@
+// Login
+{
+    "email": "haule123456@gmail.com",
+    "password": "haule1234"
+}
+
+// Create post
+{
+    "title": "Looking for freelancer",
+    "description": "Just need to find a freelancer to help build this website",
+    "jobCategory": "Fullstack Developer",
+    "skills": "ReactJs, NodeJs",
+    "budget": 1000000,
+    "isApplied": true
+}
