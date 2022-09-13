@@ -15,7 +15,6 @@ import twitter from '../assets/svg/twitter.svg'
 const ContactUs = () => {
   return (
     <div>
-      <Header></Header>
       <BackgroundLayer>
         <div className='backgroundHolder'>
           <img src={NatureBackground} alt='' />
@@ -77,7 +76,6 @@ const ContactUs = () => {
           </div>
         </div>
       </ForegroundLayer>
-      <Footer></Footer>
     </div>
   )
 }
