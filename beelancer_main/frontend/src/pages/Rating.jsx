@@ -1,4 +1,4 @@
-import * as React from 'react'
+{/*import * as React from 'react'
 import styled from 'styled-components'
 import UserImage from '../assets/bill.jfif'
 import Rating from '@mui/material/Rating'
@@ -416,3 +416,4 @@ const Rate = () => {
 }
 
 export default Rate
+*/}
