@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { NavLink } from 'react-router-dom'
 import beelancer_logo from '../assets/svg/logo.svg'
 import discord from '../assets/svg/discord.svg'
 import facebook from '../assets/svg/facebook.svg'
@@ -7,6 +8,10 @@ import github from '../assets/svg/github.svg'
 import google from '../assets/svg/google.svg'
 import twitter from '../assets/svg/twitter.svg'
 import styled from 'styled-components'
+
+export const MenuItem = styled(NavLink)`
+
+`
 const Footer = () => {
   return (
     <Section>
@@ -18,7 +23,9 @@ const Footer = () => {
             If you have any concern or feedback, click below to send your
             message to our team. Our sweet honey team will reach you asap!{' '}
           </p>
+          <MenuItem to='/ContactUs'>
           <div className='button'>Contact Us</div>
+          </MenuItem>
         </div>
         <div className='footerBox'>
           <h1 className='boxTitle'>About us</h1>
@@ -28,10 +35,14 @@ const Footer = () => {
             owners. This project is developed by 6 IT student of RMIT University
             Vietnam.
           </p>
+          <MenuItem to='/AboutUs'>
           <div className='button'> Read more</div>
+          </MenuItem>
         </div>
         <div className='footerBox'>
+        <MenuItem to='/'>
           <img src={beelancer_logo} alt='Beelancer logo' className='Logo' />
+          </MenuItem>
         </div>
       </ContentHolder>
       <Separator>

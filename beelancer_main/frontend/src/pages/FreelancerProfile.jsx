@@ -2,6 +2,7 @@ import React from 'react'
 import Header from '../components/Header/Header'
 import Footer from '../components/Footer'
 import styled from 'styled-components'
+import { NavLink } from 'react-router-dom'
 //background
 import Working from '../assets/Working.svg'
 //avatar
@@ -10,7 +11,6 @@ import Avatar from '../assets/images/Avatar.png'
 export default function FreelancerProfile() {
   return (
     <div>
-      <Header></Header>
       <Body>
         <img className='Background' src={Working} alt='background' />
         <ContentBox>
@@ -63,73 +63,48 @@ export default function FreelancerProfile() {
             </div>
           </RightPanel>
           <Setting>
-            <div>
+            <MenuItem to="/profileSetting">
+              <div>
               <p>✎</p>
-              <p>✎</p>
-              <p>✎</p>
-            </div>
+              </div>
+            </MenuItem>
           </Setting>
         </ContentBox>
       </Body>
-      <Footer></Footer>
 
-      <Body>
-        <img className='Background' src={Working} alt='background' />
-        <ContentBox>
-          <LeftPanel>
-            <div className='Avatar'>
-              <div className='Circle' id='Circle1'></div>
-              <div className='Circle' id='Circle2'>
-                <img src={Avatar} alt='UserAvatar' />
-              </div>
-            </div>
-            <div className='Titles'>
-              <h2>Programmer</h2>
-              <h2>Game Developer</h2>
-              <h2>C# Programmer</h2>
-            </div>
-          </LeftPanel>
-          <RightPanel>
-            <h1>Bill Gates</h1>
-            <h3>What I am good at</h3>
-            <div className='skills'>
-              <p>C#</p>
-              <p>UI,UX Design</p>
-              <p>JavaScript</p>
-              <p>Some skills</p>
-            </div>
-            <h3>What client says about me</h3>
-            <div className='review'>
-              <p className='content'>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book. It has
-                survived not only five centuries, but also the leap into
-                electronic typesetting, remaining essentially unchanged. It was
-                popularised in the 1960s with the release of Letraset sheets
-                containing Lorem Ipsum passages,
-              </p>
-              <p className='author'>Tywin Lanister</p>
-            </div>
-            <h3>Where to find me</h3>
-            <div className='contact'>
-              <div className='contactBox'>
-                <h4>Phone Number: </h4>
-                <p>093012973</p>
-              </div>
-              <div className='contactBox'>
-                <h4>Contact Email: </h4>
-                <p>example@example.com</p>
-              </div>
-            </div>
-          </RightPanel>
-        </ContentBox>
-      </Body>
     </div>
   )
 }
 
+export const MenuItem = styled(NavLink)`
+div {
+    border: rgba(232, 170, 12, 0.7) solid 2px;
+    background-color: rgba(232, 170, 12, 0.7);
+    padding: 10px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    &:hover {
+      background-color: transparent;
+      p {
+        color: rgba(232, 170, 12, 1);
+      }
+    }
+  }
+  p {
+    color: white;
+    font-size: 20px;
+  }
+  @media screen and (max-width: 850px) {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+  }
+`
 const Body = styled.section`
   //background-color: #e8aa0c;
   .Background {
