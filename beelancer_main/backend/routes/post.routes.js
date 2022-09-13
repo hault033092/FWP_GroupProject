@@ -37,7 +37,7 @@ router.post('/createPost', verify, async (req, res) => {
     budget: req.body.budget,
     isApplied: req.body.isApplied,
   })
-
+  console.log("check post: "+newPost)
   //
   try {
     await newPost.save()
