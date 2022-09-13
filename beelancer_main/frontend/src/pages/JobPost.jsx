@@ -113,6 +113,7 @@ const JobPost = () => {
     //
     console.log("submite check")
     save()
+    
   }
   return (
     <div style={{
