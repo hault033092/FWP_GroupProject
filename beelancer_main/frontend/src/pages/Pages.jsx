@@ -9,6 +9,7 @@ import JobPost from './JobPost'
 import ContactUs from './ContactUs'
 import Rating from './Rating'
 import JobList from './JobList/JobList'
+import ProfileSetting from './ProfileSetting'
 
 const Pages = () => {
   return (
@@ -21,6 +22,7 @@ const Pages = () => {
       <Route path='/ForgotPassword' element={<ForgotPassword />} />
       <Route path='/JobPost' element={<JobPost />} />
       <Route path='/ContactUs' element={<ContactUs />} />
+      <Route path='/profileSetting' element={<ProfileSetting />} />
       {/* <Route path='/Rating' element={<Rating />} /> */}
     </Routes>
   )

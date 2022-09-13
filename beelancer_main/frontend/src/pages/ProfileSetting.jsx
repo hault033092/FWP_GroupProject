@@ -1,7 +1,5 @@
 import React, { useState,useEffect } from 'react'
 import { useRef } from 'react'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
 import styled from 'styled-components'
 //Logo
 import beelancer_logo from '../assets/svg/logo.svg'
@@ -67,7 +65,6 @@ export default function ProfileSetting() {
       
       }
     }>
-        <Header></Header>
         <Body>
         <Logo>
             <img src={beelancer_logo} alt="logo" />
@@ -228,7 +225,6 @@ export default function ProfileSetting() {
           </div>
         </ReviewSelector>
         )}
-        <Footer></Footer>
     </div>
   )
 }

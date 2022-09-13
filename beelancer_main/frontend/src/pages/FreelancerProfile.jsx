@@ -2,6 +2,7 @@ import React from 'react'
 import Header from '../components/Header/Header'
 import Footer from '../components/Footer'
 import styled from 'styled-components'
+import { NavLink } from 'react-router-dom'
 //background
 import Working from '../assets/Working.svg'
 //avatar
@@ -62,10 +63,11 @@ export default function FreelancerProfile() {
             </div>
           </RightPanel>
           <Setting>
-            <div>
+            <MenuItem to="/profileSetting">
+              <div>
               <p>✎</p>
-
-            </div>
+              </div>
+            </MenuItem>
           </Setting>
         </ContentBox>
       </Body>
@@ -74,6 +76,35 @@ export default function FreelancerProfile() {
   )
 }
 
+export const MenuItem = styled(NavLink)`
+div {
+    border: rgba(232, 170, 12, 0.7) solid 2px;
+    background-color: rgba(232, 170, 12, 0.7);
+    padding: 10px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    &:hover {
+      background-color: transparent;
+      p {
+        color: rgba(232, 170, 12, 1);
+      }
+    }
+  }
+  p {
+    color: white;
+    font-size: 20px;
+  }
+  @media screen and (max-width: 850px) {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+  }
+`
 const Body = styled.section`
   //background-color: #e8aa0c;
   .Background {
