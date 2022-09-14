@@ -3,7 +3,7 @@ const Freelancer = require('../model/freelancer.model')
 const verify = require('../helper/verifyToken')
 const { registerValidation, loginValidation } = require('../helper/validation')
 
-// Get all post
+// Get all freelancers
 router.get('/getFreelancers', verify, async (req, res) => {
   try {
     const foundFreelancer = await Freelancer.find()
@@ -13,8 +13,8 @@ router.get('/getFreelancers', verify, async (req, res) => {
   }
 })
 
-// Get post by id
-router.get('/getFreelancer/:freelancerId', verify, async (req, res) => {
+// Get freelancer by id
+router.get('/getFreelancerById/:freelancerId', verify, async (req, res) => {
   try {
     const foundFreelancer = await Freelancer.findOne({
       _id: req.params.freelancerId,
@@ -25,7 +25,19 @@ router.get('/getFreelancer/:freelancerId', verify, async (req, res) => {
   }
 })
 
-// Create postW
+// Get freelancer by user id
+router.get('/getFreelancerByUser/:userId', verify, async (req, res) => {
+  try {
+    const foundFreelancer = await Freelancer.findOne({
+      _id: req.params.userId,
+    })
+    res.json(foundFreelancer)
+  } catch (error) {
+    res.json({ message: error })
+  }
+})
+
+// Create freelancer
 router.post('/createFreelancer', verify, async (req, res) => {
   //   const { error } = postValidate(req.body)
   //   if (error) return res.status(400).send(error.details[0].message)
@@ -50,7 +62,7 @@ router.post('/createFreelancer', verify, async (req, res) => {
   }
 })
 
-// Delete post
+// Delete freelancer
 router.delete('/deleteFreelancer/:freelancerId', verify, async (req, res) => {
   try {
     await Freelancer.deleteOne({
@@ -62,8 +74,8 @@ router.delete('/deleteFreelancer/:freelancerId', verify, async (req, res) => {
   }
 })
 
-// Update post
-router.patch('/updateFreelancer/:freelancerId', verify, async (req, res) => {
+// Update freelancer
+router.put('/updateFreelancer/:freelancerId', verify, async (req, res) => {
   try {
     await Freelancer.updateOne(
       {

@@ -15,6 +15,7 @@ localhost:8080/api/jobPost/updatePost/:postId
 // Freelancer
 localhost:8080/api/freelancer/getFreelancers
 localhost:8080/api/freelancer/getFreelancer/:freelancerId
+localhost:8080/api/freelancer/getFreelancerByUser/:userId
 localhost:8080/api/freelancer/createFreelancer
 localhost:8080/api/freelancer/deteleFreelancer/:freelancerId
 localhost:8080/api/freelancer/updateFreelancer/:freelancerId
