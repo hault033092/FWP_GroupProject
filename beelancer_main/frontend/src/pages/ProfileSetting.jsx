@@ -4,6 +4,7 @@ import styled from 'styled-components'
 //Logo
 import beelancer_logo from '../assets/svg/logo.svg'
 import Avatar from '../assets/images/Avatar.png'
+import axios from 'axios'
 export default function ProfileSetting() {
   //avatar profile 
     const [image,setImage] = useState(null)
@@ -21,6 +22,10 @@ export default function ProfileSetting() {
        setPreview(Avatar)
       }
     })
+    const [name,setName] = useState("")
+    const [userId,setUserId] = useState("631f4c84412d288586026ab9")
+    const [dateOfBirth,setDateOfBirth] = useState("14/09/2022")
+    const [address,setAddress] = useState("85 Duongwf so 2")
     //review
     const [reviewShown,setReviewShown] = useState(false);
     const handleReviewClick = event =>{
@@ -33,6 +38,11 @@ export default function ProfileSetting() {
     //
     const [jobs, setJobs] = useState([])
     const [jobInput, setJobInput] = useState("")
+    //
+    const [contactPhone, setPhone] = useState("")
+    const [contactEmail, setEmail] = useState("")
+    //submission check
+    const [submited,setSubmitted] = useState(false)
     // add skill on button enter
   const addASkill = (event) => {
     if(skillInput == "")
@@ -53,10 +63,69 @@ export default function ProfileSetting() {
     setJobs((previous) => previous.concat(jobInput))
   }
 
+  const cURL = "http://localhost:8080/api/freelancer/createFreelancer"
+  
+  const save = () =>{
+    console.log({
+      user: userId,
+      name: name,
+      phoneNumber: contactPhone,
+      dateOfBirth: dateOfBirth,
+      email:contactEmail,
+      address: address,
+      bio: jobs.toString(),
+      personalSkills: skills.toString()
+    })
+    axios.put(cURL,{
+      user: userId,
+      name: name,
+      phoneNumber: contactPhone,
+      dateOfBirth: dateOfBirth,
+      email:contactEmail,
+      address: address,
+      bio: jobs.toString(),
+      personalSkills: skills.toString()
+    },
+    
+    {headers:{
+      'Content-Type': 'application/json',
+
+          'auth-token':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzFmNGM4NDQxMmQyODg1ODYwMjZhYjkiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NjMwNjA3NDR9.vUWXh262lz12tbp9E9ZIWr26sW6N3b62HXFwrECsUa0'
+       
+    }})
+    .then(res => {
+      console.log(res)
+    })
+  }
+    //display error on submit if content is empty
+    function SubmitErrorWarning()
+    {
+      if(submited === true)
+      {
+        return(<p className='submitWarning'>Please check your post, an input field may be missing!</p>)
+      }
+      return
+    }
   //handle submit
   const handleSubmit = (event) => {
     event.preventDefault()
+    setSubmitted(true)
+    //check name
+    if(name === "")
+    {
+      return
+    }
+    if(contactPhone ==="")
+    {
+      return
+    }
+    if(contactEmail ==="")
+    {
+      return
+    }
+    save()
   }
+  //-----------------------------------------------------------------------------------
   return (
     <div style={
       {
@@ -98,6 +167,7 @@ export default function ProfileSetting() {
                 id='name'
                 name='name'
                 placeholder='Fullname.'
+                onChange={(e) => setName(e.target.value)}
                 />
             </TextBox>
             <TextBox>
@@ -180,9 +250,15 @@ export default function ProfileSetting() {
             <h4>Phonenumber:</h4>
                 <input
                 type='text'
+                onKeyPress={(event) => {
+                  if (!/[0-9]/.test(event.key)) {
+                    event.preventDefault();
+                  }
+                }}
                 id='phoneNumber'
                 name='phoneNumber'
                 placeholder='1900 1234 56'
+                onChange={(e) => setPhone(e.target.value)}
                 />
             <h4>Contact email:</h4>
                 <input
@@ -190,8 +266,10 @@ export default function ProfileSetting() {
                 id='contactEmail'
                 name='contactEmail'
                 placeholder='example@email.com'
+                onChange={(e) => setEmail(e.target.value)}
                 />
             </TextBox>
+                <SubmitErrorWarning />
             <input className='submitButton' type='submit' value='Confirm setting' />
           </form>
         </Form>
@@ -333,6 +411,12 @@ const Form = styled.section`
         }
     
     }
+    .submitWarning{
+    text-align: center;
+    font-size: 14px;
+    font-weight: lighter;
+    color:red;
+  }
     @media screen and (max-width:1300px) {
       width: 70%;
     }   

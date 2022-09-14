@@ -14,7 +14,7 @@ router.get('/getFreelancers', verify, async (req, res) => {
 })
 
 // Get post by id
-router.get('/getFreelancerById/:freelancerId', verify, async (req, res) => {
+router.get('/getFreelancer/:freelancerId', verify, async (req, res) => {
   try {
     const foundFreelancer = await Freelancer.findOne({
       _id: req.params.freelancerId,
@@ -35,6 +35,7 @@ router.post('/createFreelancer', verify, async (req, res) => {
     name: req.body.name,
     phoneNumber: req.body.phoneNumber,
     dateOfBirth: req.body.dateOfBirth,
+    email: req.body.email,
     address: req.body.address,
     bio: req.body.bio,
     personalSkills: req.body.personalSkills,
@@ -73,6 +74,7 @@ router.patch('/updateFreelancer/:freelancerId', verify, async (req, res) => {
           name: req.body.name,
           phoneNumber: req.body.phoneNumber,
           dateOfBirth: req.body.dateOfBirth,
+          email: req.body.email,
           address: req.body.address,
           bio: req.body.bio,
           personalSkills: req.body.personalSkills,

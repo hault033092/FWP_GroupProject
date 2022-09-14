@@ -67,6 +67,7 @@ export default function FreelancerProfile() {
               <div>
               <p>✎</p>
               </div>
+              Edit
             </MenuItem>
           </Setting>
         </ContentBox>
@@ -77,6 +78,12 @@ export default function FreelancerProfile() {
 }
 
 export const MenuItem = styled(NavLink)`
+display: flex;
+flex-direction: row;
+align-items: center;
+font-style: normal;
+text-decoration: none;
+color: rgba(232, 170, 12, 1);
 div {
     border: rgba(232, 170, 12, 0.7) solid 2px;
     background-color: rgba(232, 170, 12, 0.7);

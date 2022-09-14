@@ -10,6 +10,7 @@ import ContactUs from './ContactUs'
 import Rating from './Rating'
 import JobList from './JobList/JobList'
 import ProfileSetting from './ProfileSetting'
+import FreelancerProfile from './FreelancerProfile'
 
 const Pages = () => {
   return (
@@ -23,6 +24,7 @@ const Pages = () => {
       <Route path='/JobPost' element={<JobPost />} />
       <Route path='/ContactUs' element={<ContactUs />} />
       <Route path='/profileSetting' element={<ProfileSetting />} />
+      <Route path='/FreelancerProfile' element={<FreelancerProfile />} />
       {/* <Route path='/Rating' element={<Rating />} /> */}
     </Routes>
   )

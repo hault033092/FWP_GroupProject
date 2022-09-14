@@ -10,9 +10,16 @@ const freelancerSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    selectedRating: {
+      type: mongoose.Types.ObjectId,
+    },
     phoneNumber: {
       type: String,
       required: true,
+    },
+    email:{
+      type:String,
+      required:true,
     },
     dateOfBirth: {
       type: String,
