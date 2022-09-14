@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useRef } from 'react'
 import styled from 'styled-components'
 //Logo
@@ -9,59 +9,57 @@ import { useNavigate } from 'react-router-dom';
 
 export default function ProfileSetting() {
   //avatar profile 
-    const [image,setImage] = useState(null)
-    const [startingImage,setStarting] = useState()
-    const [preview,setPreview] = useState(Avatar)
-    const fileInputRef = useRef(null)
-    useEffect(()=>{
-      if(image){
-        const render = new FileReader()
-        render.onloadend = () =>{
-          setPreview(render.result)
-        };
-        render.readAsDataURL(image)
-      }
-      else{
-       setPreview(Avatar)
-      }
-    })
-    const [name,setName] = useState("")
-    const [userId,setUserId] = useState("631f4c84412d288586026ab9")
-    const [dateOfBirth,setDateOfBirth] = useState("")
-    const [address,setAddress] = useState("")
-    //review
-    const [reviewShown,setReviewShown] = useState(false);
-    const handleReviewClick = event =>{
-      //toggle show state
-      setReviewShown(!reviewShown)
+  const [image, setImage] = useState(null)
+  const [startingImage, setStarting] = useState()
+  const [preview, setPreview] = useState(Avatar)
+  const fileInputRef = useRef(null)
+  useEffect(() => {
+    if (image) {
+      const render = new FileReader()
+      render.onloadend = () => {
+        setPreview(render.result)
+      };
+      render.readAsDataURL(image)
     }
-    //skill
-    const [skills, setSkills] = useState([])
-    const [skillInput, setSkillInput] = useState('')
-    //
-    const [jobs, setJobs] = useState([])
-    const [jobInput, setJobInput] = useState("")
-    //
-    const [contactPhone, setPhone] = useState("")
-    const [contactEmail, setEmail] = useState("")
-    //submission check
-    const [submited,setSubmitted] = useState(false)
-    //naviagte
-    const navigate = useNavigate();
-    // add skill on button enter
+    else {
+      setPreview(Avatar)
+    }
+  })
+  const [name, setName] = useState("")
+  const [userId, setUserId] = useState("631f4c84412d288586026ab9")
+  const [dateOfBirth, setDateOfBirth] = useState("")
+  const [address, setAddress] = useState("")
+  //review
+  const [reviewShown, setReviewShown] = useState(false);
+  const handleReviewClick = event => {
+    //toggle show state
+    setReviewShown(!reviewShown)
+  }
+  //skill
+  const [skills, setSkills] = useState([])
+  const [skillInput, setSkillInput] = useState('')
+  //
+  const [jobs, setJobs] = useState([])
+  const [jobInput, setJobInput] = useState("")
+  //
+  const [contactPhone, setPhone] = useState("")
+  const [contactEmail, setEmail] = useState("")
+  //submission check
+  const [submited, setSubmitted] = useState(false)
+  //naviagte
+  const navigate = useNavigate();
+  // add skill on button enter
   const addASkill = (event) => {
-    if(skillInput == "")
-    {
-        return
+    if (skillInput == "") {
+      return
     }
     setSkillInput("")
     event.preventDefault()
     setSkills((previous) => previous.concat(skillInput))
   }
-  const addAJob = (event) =>{
-    if(jobInput == "")
-    {
-        return
+  const addAJob = (event) => {
+    if (jobInput == "") {
+      return
     }
     setJobInput("")
     event.preventDefault()
@@ -70,46 +68,59 @@ export default function ProfileSetting() {
 
   const cURL = "http://localhost:8080/api/freelancer/updateFreelancer/63222cf380e3b60caa1f3a85"
   const rURL = "http://localhost:8080/api/freelancer/getFreelancer/63222cf380e3b60caa1f3a85"
-  const load = () =>{
-    axios.get(rURL,   {headers:{
-      'Content-Type': 'application/json',
-          'auth-token':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzFmNGM4NDQxMmQyODg1ODYwMjZhYjkiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NjMwNjA3NDR9.vUWXh262lz12tbp9E9ZIWr26sW6N3b62HXFwrECsUa0'
-       
-    }})
-    .then(
-      res => {
-        const data = res.data
-        setName(data.name)
-        setPhone(data.phoneNumber)
-        setEmail(data.email)
-        setDateOfBirth(data.dateOfBirth)
-        setEmail(data.email)
-        setAddress(data.address)
-        const s = data.personalSkills.split(",")
-        setSkills(s)
-        const j = data.bio.split(",")
-        setJobs(j)
+  const load = () => {
+    axios.get(rURL, {
+      headers: {
+        'Content-Type': 'application/json',
+        'auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzFmNGM4NDQxMmQyODg1ODYwMjZhYjkiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NjMwNjA3NDR9.vUWXh262lz12tbp9E9ZIWr26sW6N3b62HXFwrECsUa0'
+
       }
-    )
+    })
+      .then(
+        res => {
+          const data = res.data
+          setName(data.name)
+          setPhone(data.phoneNumber)
+          setEmail(data.email)
+          setDateOfBirth(data.dateOfBirth)
+          setEmail(data.email)
+          setAddress(data.address)
+          const s = data.personalSkills.split(",")
+          setSkills(s)
+          const j = data.bio.split(",")
+          setJobs(j)
+        }
+      )
   }
-  useEffect(()=>{
+  useEffect(() => {
     load();
-  },[])
-  const save = () =>{
+  }, [])
+  const save = () => {
 
     const data = new FormData();
-    data.append("user",userId);
-    data.append("avatar",image);
-    data.append("name",name);
-    data.append("phoneNumber",contactPhone)
-    data.append("dateOfBirth",dateOfBirth)
-    data.append("email",contactEmail)
-    data.append("address",address)
-    data.append("bio",jobs.toString())
-    data.append("personalSkills",skills.toString())
-    console.log(data)
-    console.log({     
-       user: userId,
+    data.append("user", userId);
+    data.append("avatar", image);
+    data.append("name", name);
+    data.append("phoneNumber", contactPhone)
+    data.append("dateOfBirth", dateOfBirth)
+    data.append("email", contactEmail)
+    data.append("address", address)
+    data.append("bio", jobs.toString())
+    data.append("personalSkills", skills.toString())
+    console.log({
+      user: userId,
+      avatar: image,
+      name: name,
+      phoneNumber: contactPhone,
+      dateOfBirth: dateOfBirth,
+      email: contactEmail,
+      address: address,
+      bio: jobs.toString(),
+      personalSkills: skills.toString()
+    })
+    axios.patch(cURL, {
+
+      user: userId,
       avatar:image,
       name: name,
       phoneNumber: contactPhone,
@@ -118,55 +129,39 @@ export default function ProfileSetting() {
       address: address,
       bio: jobs.toString(),
       personalSkills: skills.toString()
-    })
-    axios.patch(cURL,{
-      data
-      // user: userId,
-      // avatar:image,
-      // name: name,
-      // phoneNumber: contactPhone,
-      // dateOfBirth: dateOfBirth,
-      // email:contactEmail,
-      // address: address,
-      // bio: jobs.toString(),
-      // personalSkills: skills.toString()
     },
-    
-    {headers:{
-      'Content-Type': 'application/json',
-
-          'auth-token':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzFmNGM4NDQxMmQyODg1ODYwMjZhYjkiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NjMwNjA3NDR9.vUWXh262lz12tbp9E9ZIWr26sW6N3b62HXFwrECsUa0'
-       
-    }})
-    .then(res => {
-      console.log("submission successful!")
-      console.log(res)
-    })
-  }
-    //display error on submit if content is empty
-    function SubmitErrorWarning()
-    {
-      if(submited === true)
       {
-        return(<p className='submitWarning'>Please check your post, an input field may be missing!</p>)
-      }
-      return
+        headers: {
+         // 'Content-Type': 'application/json',
+          'Content-Type': 'multipart/form-data',
+          'auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzFmNGM4NDQxMmQyODg1ODYwMjZhYjkiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NjMwNjA3NDR9.vUWXh262lz12tbp9E9ZIWr26sW6N3b62HXFwrECsUa0'
+
+        }
+      })
+      .then(res => {
+        console.log("submission successful!")
+        //console.log(res.body)
+      })
+  }
+  //display error on submit if content is empty
+  function SubmitErrorWarning() {
+    if (submited === true) {
+      return (<p className='submitWarning'>Please check your post, an input field may be missing!</p>)
     }
+    return
+  }
   //handle submit
   const handleSubmit = (event) => {
     event.preventDefault()
     setSubmitted(true)
     //check name
-    if(name === "")
-    {
+    if (name === "") {
       return
     }
-    if(contactPhone ==="")
-    {
+    if (contactPhone === "") {
       return
     }
-    if(contactEmail ==="")
-    {
+    if (contactEmail === "") {
       return
     }
     save()
@@ -178,104 +173,104 @@ export default function ProfileSetting() {
       {
         position: "relative",
         width: "100%",
-      
+
       }
     }>
-        <Body>
+      <Body>
         <Logo>
-            <img src={beelancer_logo} alt="logo" />
-            <h1>Profile Setting</h1>
+          <img src={beelancer_logo} alt="logo" />
+          <h1>Profile Setting</h1>
         </Logo>
         <Form>
-            <form action='' onSubmit={handleSubmit}>
+          <form action='' onSubmit={handleSubmit}>
             <div className='avatar'>
-                <img src={preview} alt="UserAvatar" />
-                <button className='overlay'
-                            onClick= {(event)=>{
-                              event.preventDefault()
-                              fileInputRef.current.click()}}
-                ></button>
-            <input type="file" name='avatar'accept='image/png,image/jpeg,image/webp' ref = {fileInputRef}
-            onChange = {(event) =>{
-              const file = event.target.files[0]
-              if(file)
-              {
-                console.log(file)
-                setImage(file)
-              }
-              else{
-                setImage(Avatar)
-              }
-            }} />
+              <img src={preview} alt="UserAvatar" />
+              <button className='overlay'
+                onClick={(event) => {
+                  event.preventDefault()
+                  fileInputRef.current.click()
+                }}
+              ></button>
+              <input type="file" name='avatar' accept='image/png,image/jpeg,image/webp' ref={fileInputRef}
+                onChange={(event) => {
+                  const file = event.target.files[0]
+                  if (file) {
+                    console.log(file)
+                    setImage(file)
+                  }
+                  else {
+                    setImage(Avatar)
+                  }
+                }} />
             </div>
 
             <TextBox>
-            <h2>Full Name</h2>
-            <p className='note'>State your full name</p>
-                <input
+              <h2>Full Name</h2>
+              <p className='note'>State your full name</p>
+              <input
                 type='text'
                 id='name'
                 value={name}
                 placeholder='Fullname.'
                 onChange={(e) => setName(e.target.value)}
-                />
+              />
             </TextBox>
             <TextBox>
-            <div className='reviewTitle'>
-            <h2>Client reviews</h2>
-            <button onClick={()=>{handleReviewClick()}}>✎</button>
-            </div>
-            <p className='note'>Select a review you like the most</p>
-            <div className='review'>
+              <div className='reviewTitle'>
+                <h2>Client reviews</h2>
+                <button onClick={() => { handleReviewClick() }}>✎</button>
+              </div>
+              <p className='note'>Select a review you like the most</p>
+              <div className='review'>
                 <p className='content'>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
                 <p className='author'>Sansa Stark</p>
-            </div>
+              </div>
             </TextBox>
             <TextBox>
-            <h2>Your Skills</h2>
-            <p className='note'>State skills you have, so we may find jobs suit you.</p>
-            <div className='skillBox'>
-              {skills.map((s) => {
-                return (
-                  <SkillStyle>
-                    <p>{s}</p>
-                    <button
-                      onClick={(event) => {
-                        event.preventDefault()
-                        setSkills(skills.filter((e) => e != s))
-                      }}
-                    >
-                      ✖
-                    </button>
-                  </SkillStyle>
-                )
-              })}
-            </div>
-            <div className='skillHolder'>
-              <input
-                className='skillInput'
-                type='text'
-                id='skill'
-                name='skill'
-                placeholder='C# programming, etc...'
-                onChange={(e) => {
-                  setSkillInput(e.target.value)
-                }}
-              />
+              <h2>Your Skills</h2>
+              <p className='note'>State skills you have, so we may find jobs suit you.</p>
+              <div className='skillBox'>
+                {skills.map((s) => {
+                  return (
+                    <SkillStyle>
+                      <p>{s}</p>
+                      <button
+                        onClick={(event) => {
+                          event.preventDefault()
+                          setSkills(skills.filter((e) => e != s))
+                        }}
+                      >
+                        ✖
+                      </button>
+                    </SkillStyle>
+                  )
+                })}
+              </div>
+              <div className='skillHolder'>
+                <input
+                  className='skillInput'
+                  type='text'
+                  id='skill'
+                  name='skill'
+                  placeholder='C# programming, etc...'
+                  onChange={(e) => {
+                    setSkillInput(e.target.value)
+                  }}
+                />
 
-              <button className='skillEnter' onClick={addASkill}>
-                Add A Skill
-              </button>
-            </div>
-          </TextBox>
-          <TextBox>
-            <h2>Job Title</h2>
-            <p className='note'>What is your job title? VFX artist, Game developer...</p>
-            <div className='jobTitleHolder'>
-                {jobs.map((job) =>{
-                    return(
-                        <p>{job}                     
-                        <button className='removeButton'
+                <button className='skillEnter' onClick={addASkill}>
+                  Add A Skill
+                </button>
+              </div>
+            </TextBox>
+            <TextBox>
+              <h2>Job Title</h2>
+              <p className='note'>What is your job title? VFX artist, Game developer...</p>
+              <div className='jobTitleHolder'>
+                {jobs.map((job) => {
+                  return (
+                    <p>{job}
+                      <button className='removeButton'
                         onClick={(event) => {
                           event.preventDefault()
                           setJobs(jobs.filter((e) => e != job))
@@ -283,31 +278,31 @@ export default function ProfileSetting() {
                       >
                         ✖
                       </button></p>
-                    )
+                  )
                 })}
-            </div>
-            <div className='skillHolder'>
-              <input
-                className='skillInput'
-                type='text'
-                id='skill'
-                name='skill'
-                placeholder='Job Title'
-                onChange={(e) => {
-                    setJobInput(e.target.value)
-                }}
-              />
-
-              <button className='skillEnter' onClick={addAJob}>
-                Add Job Title
-              </button>
-            </div>
-          </TextBox>
-          <TextBox>
-            <h2>Contact</h2>
-            <p className='note'>How clients may contact you.</p>
-            <h4>Phonenumber:</h4>
+              </div>
+              <div className='skillHolder'>
                 <input
+                  className='skillInput'
+                  type='text'
+                  id='skill'
+                  name='skill'
+                  placeholder='Job Title'
+                  onChange={(e) => {
+                    setJobInput(e.target.value)
+                  }}
+                />
+
+                <button className='skillEnter' onClick={addAJob}>
+                  Add Job Title
+                </button>
+              </div>
+            </TextBox>
+            <TextBox>
+              <h2>Contact</h2>
+              <p className='note'>How clients may contact you.</p>
+              <h4>Phonenumber:</h4>
+              <input
                 type='text'
                 onKeyPress={(event) => {
                   if (!/[0-9]/.test(event.key)) {
@@ -319,51 +314,51 @@ export default function ProfileSetting() {
                 placeholder='1900 1234 56'
                 value={contactPhone}
                 onChange={(e) => setPhone(e.target.value)}
-                />
-            <h4>Contact email:</h4>
-                <input
+              />
+              <h4>Contact email:</h4>
+              <input
                 type='text'
                 id='contactEmail'
                 name='contactEmail'
-                value ={contactEmail}
+                value={contactEmail}
                 placeholder='example@email.com'
                 onChange={(e) => setEmail(e.target.value)}
-                />
+              />
             </TextBox>
-                <SubmitErrorWarning />
+            <SubmitErrorWarning />
             <input className='submitButton' type='submit' value='Confirm setting' />
           </form>
         </Form>
-        </Body>
-        {reviewShown &&(
+      </Body>
+      {reviewShown && (
         <ReviewSelector>
           <div className='Panel'>
-                <button className='cancel' onClick={()=>handleReviewClick()}>
-                ╳
-                </button>
-                <h1>Select a review</h1>
-                <p>Your client will see the review, let people know how you have done your work.</p>
-                <div className='reviewHolder'>
-                  <div className='reviewBox'>
-                    <h4>UserName</h4>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                    <button>Select</button>
-                  </div>
-                  <div className='reviewBox'>
-                    <h4>UserName</h4>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                    <button>Select</button>
-                  </div>
-                  <div className='reviewBox'>
-                    <h4>UserName</h4>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                    <button>Select</button>
-                  </div>
-                </div>
+            <button className='cancel' onClick={() => handleReviewClick()}>
+              ╳
+            </button>
+            <h1>Select a review</h1>
+            <p>Your client will see the review, let people know how you have done your work.</p>
+            <div className='reviewHolder'>
+              <div className='reviewBox'>
+                <h4>UserName</h4>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                <button>Select</button>
+              </div>
+              <div className='reviewBox'>
+                <h4>UserName</h4>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                <button>Select</button>
+              </div>
+              <div className='reviewBox'>
+                <h4>UserName</h4>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                <button>Select</button>
+              </div>
+            </div>
 
           </div>
         </ReviewSelector>
-        )}
+      )}
     </div>
   )
 }

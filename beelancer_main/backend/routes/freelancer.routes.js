@@ -77,13 +77,11 @@ router.delete('/deleteFreelancer/:freelancerId', verify, async (req, res) => {
 })
 
 // Update post
-router.patch('/updateFreelancer/:freelancerId',upload.single('avatar'), verify, async (req, res) => {
-  console.log("avatar is")
-  console.log(req.body.avatar)
-  console.log(req.file)
-  console.log("content:")
+router.patch('/updateFreelancer/:freelancerId',upload.single("avatar"), verify, async (req, res) => {
+
   console.log({
     name: req.body.name,
+    avatar: req.body.avatar,
     phoneNumber: req.body.phoneNumber,
     dateOfBirth: req.body.dateOfBirth,
     email: req.body.email,
@@ -92,7 +90,7 @@ router.patch('/updateFreelancer/:freelancerId',upload.single('avatar'), verify, 
     personalSkills: req.body.personalSkills,
   })
   try {
-    console.log("check here")
+    //console.log("check here")
     await Freelancer.updateOne(
       {
         _id: req.params.freelancerId,
@@ -106,7 +104,7 @@ router.patch('/updateFreelancer/:freelancerId',upload.single('avatar'), verify, 
           address: req.body.address,
           bio: req.body.bio,
           personalSkills: req.body.personalSkills,
-          //avatar: fs.readFileSync("uploads/"+ req.file.filename),
+          avatar: fs.readFileSync("uploads/"+ req.file.filename),
         },
       }
     )
