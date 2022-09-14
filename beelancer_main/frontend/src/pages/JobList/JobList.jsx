@@ -17,112 +17,132 @@ import LocationOnIcon from '@mui/icons-material/LocationOn'
 import Paper from '@mui/material/Paper'
 import Divider from '@mui/material/Divider'
 import ReactPaginate from 'react-paginate'
+import axios from 'axios'
 import './grid.css'
 // import './joblist.css'
 
 const JobList = () => {
-  const data = [
-    {
-      id: 1,
-      title: 'Product designer',
-      content:
-        'This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup of frozen peas along with the mussels, if you like.',
-      salary: 100,
-      workType: 'Full-time',
-      location: 'Ha-Noi',
-    },
-    {
-      id: 2,
-      title: 'Product designer',
-      content:
-        'This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup of frozen peas along with the mussels, if you like.',
-      salary: 200,
-      workType: 'Full-time',
-      location: 'Ha-Noi',
-    },
-    {
-      id: 3,
-      title: 'Product designer',
-      content:
-        'This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup of frozen peas along with the mussels, if you like.',
-      salary: 300,
-      workType: 'Full-time',
-      location: 'Ha-Noi',
-    },
-    {
-      id: 4,
-      title: 'Product designer',
-      content:
-        'This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup of frozen peas along with the mussels, if you like.',
-      salary: 400,
-      workType: 'Full-time',
-      location: 'Ha-Noi',
-    },
-    {
-      id: 5,
-      title: 'Product designer',
-      content:
-        'This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup of frozen peas along with the mussels, if you like.',
-      salary: 500,
-      workType: 'Full-time',
-      location: 'Ha-Noi',
-    },
-    {
-      id: 6,
-      title: 'Product designer',
-      content:
-        'This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup of frozen peas along with the mussels, if you like.',
-      salary: 700,
-      workType: 'Full-time',
-      location: 'Ha-Noi',
-    },
-    {
-      id: 7,
-      title: 'Product designer',
-      content:
-        'This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup of frozen peas along with the mussels, if you like.',
-      salary: 900,
-      workType: 'Full-time',
-      location: 'Ha-Noi',
-    },
-    {
-      id: 8,
-      title: 'Product designer',
-      content:
-        'This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup of frozen peas along with the mussels, if you like.',
-      salary: 1000,
-      workType: 'Full-time',
-      location: 'Ha-Noi',
-    },
-  ]
+  const url = "http://localhost:8080/api/jobPost/getPosts"
+  // https://60ed48f1a78dc700178addd6.mockapi.io/Movies
+  // http://localhost:8080/api/jobPost/getPosts
+  
+  const [data, setData] = React.useState([])
+  React.useEffect(function getData() {
+    axios.get(url,{
+      headers:{
+        'Content-Type': 'application/json',
+        'auth-token':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzFmNGM4NDQxMmQyODg1ODYwMjZhYjkiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NjMwNjA3NDR9.vUWXh262lz12tbp9E9ZIWr26sW6N3b62HXFwrECsUa0'
+      }
+    })
+  .then(function (response) {
+    // handle success
+    console.log(response.data);
+    setData(response.data);
+  })
+}, []);
+  // const data1 = [
+  //   {
+  //     id: 1,
+  //     title: 'Product designer',
+  //     description:
+  //       'This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup of frozen peas along with the mussels, if you like.',
+  //     jobCategory: "Video game",
+  //       budget: 100,
+  //     skills: "C#Programming,Anything",
+  //   },
+  //   {
+  //     id: 2,
+  //     title: 'Product designer',
+  //     description:
+  //       'This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup of frozen peas along with the mussels, if you like.',
+  //     jobCategory: "Video game",
+  //       budget: 200,
+  //     skills: "C#Programming,Anything",
+  //   },
+  //   {
+  //     id: 3,
+  //     title: 'Product designer',
+  //     description:
+  //       'This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup of frozen peas along with the mussels, if you like.',
+  //     jobCategory: "Video game",
+  //       budget: 300,
+  //     skills: "C#Programming,Anything",
+  //   },
+  //   {
+  //     id: 4,
+  //     title: 'Product designer',
+  //     description:
+  //       'This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup of frozen peas along with the mussels, if you like.',
+  //     jobCategory: "Video game",
+  //       budget: 400,
+  //     skills: "C#Programming,Anything",
+  //   },
+  //   {
+  //     id: 5,
+  //     title: 'Product designer',
+  //     description:
+  //       'This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup of frozen peas along with the mussels, if you like.',
+  //     jobCategory: "Video game",
+  //       budget: 500,
+  //     skills: "C#Programming,Anything",
+  //   },
+  //   {
+  //     id: 6,
+  //     title: 'Product designer',
+  //     description:
+  //       'This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup of frozen peas along with the mussels, if you like.',
+  //     jobCategory: "Video game",
+  //       budget: 700,
+  //     skills: "C#Programming,Anything",
+  //   },
+  //   {
+  //     id: 7,
+  //     title: 'Product designer',
+  //     description:
+  //       'This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup of frozen peas along with the mussels, if you like.',
+  //     jobCategory: "Video game",
+  //       budget: 900,
+  //     skills: "C#Programming,Anything",
+  //   },
+  //   {
+  //     id: 8,
+  //     title: 'Product designer',
+  //     description:
+  //       'This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup of frozen peas along with the mussels, if you like.',
+  //     jobCategory: "Video game",
+  //       budget: 1000,
+  //     skills: "C#Programming,Anything",
+  //   },
+  // ]
+ 
   const ItemCard = (value) => {
     return (
       <Card className='card' sx={{ mb: 3 }}>
         <CardHeader
-          action={<Typography>10 days ago</Typography>}
-          title={<Typography className='header__company'>Microsoft</Typography>}
+          // action={<Typography>10 days ago</Typography>}
+          title={<Typography className='header__company'>{value.value.title}</Typography>}
           subheader={
             <Grid container>
               <Grid item xs={12}>
                 <Typography className='header__position'>
-                  {value.value.title}
+                  {value.value.jobCategory}
                 </Typography>
               </Grid>
               <Grid item xs={3}>
-                <Typography>${value.value.salary}</Typography>
+                <Typography>${value.value.budget}</Typography>
               </Grid>
-              <Grid item xs={3}>
+              <Grid item xs={5}>
                 <Typography className='flex__'>
                   <WorkIcon sx={{ mr: 1 }} />
-                  {value.value.workType}
+                  {value.value.skills}
                 </Typography>
               </Grid>
-              <Grid item xs={3}>
+              {/* <Grid item xs={3}>
                 <Typography className='flex__'>
                   <LocationOnIcon />
                   {value.value.location}
                 </Typography>
-              </Grid>
+              </Grid> */}
             </Grid>
           }
         />
@@ -132,7 +152,7 @@ const JobList = () => {
             variant='body2'
             color='text.secondary'
           >
-            {value.value.content}
+            {value.value.description}
           </Typography>
         </CardContent>
         <CardActions disableSpacing sx={{ justifyContent: 'right' }}>
@@ -153,25 +173,27 @@ const JobList = () => {
   const [itemOffset, setItemOffset] = React.useState(0)
   const [sort, setSort] = React.useState(true)
   const itemsPerPage = 5
+  
   useEffect(() => {
+
     const endOffset = itemOffset + itemsPerPage
     if (sort) {
       setCurrentItems(
         [...data]
-          .sort((a, b) => a.salary - b.salary)
+          .sort((a, b) => a.budget - b.budget)
           .slice(itemOffset, endOffset)
       )
     } else {
       setCurrentItems(
         [...data]
-          .sort((a, b) => b.salary - a.salary)
+          .sort((a, b) => b.budget - a.budget)
           .slice(itemOffset, endOffset)
       )
     }
 
     setPageCount(Math.ceil(data.length / itemsPerPage))
     // eslint-disable-next-line
-  }, [itemOffset, itemsPerPage, sort])
+  }, [itemOffset, itemsPerPage, sort,data])
 
   const handlePageClick = (event) => {
     const newOffset = (event.selected * itemsPerPage) % data.length

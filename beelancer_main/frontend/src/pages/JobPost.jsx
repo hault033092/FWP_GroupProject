@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 
 import styled from 'styled-components'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
 
 import { BrowserRouter as Router, Routes, Link, Route } from 'react-router-dom'
 //image
@@ -21,23 +22,34 @@ const JobPost = () => {
   const [budget, setBudget] = useState(0)
   //submite check
   const [submit,setSubmit] = useState(false)
+  //naviagte
+  const navigate = useNavigate();
   //path
-  const url = "localhost:8080/api/jobPost/createPost"
+  const url = "http://localhost:8080/api/jobPost/createPost"
+  
+
   const save = () => {
     //event.preventDefault()
+
     axios.post(url,
       {
         title: title,
         description: description,
         jobCategory: cate,
-        skills: skills,
+        skills: skills.toString(),
         budget: budget
+      },{
+        headers:{
+          'Content-Type': 'application/json',
+          'auth-token':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzFmNGM4NDQxMmQyODg1ODYwMjZhYjkiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NjMwNjA3NDR9.vUWXh262lz12tbp9E9ZIWr26sW6N3b62HXFwrECsUa0'
+        }
       }
     ).then(res => {
       console.log(res)
       //do something after job post is posted
     })
   }
+
   //descripition word count
   function WordCount() {
     if (count < 0) {
@@ -105,6 +117,7 @@ const JobPost = () => {
     //
     console.log("submite check")
     save()
+    navigate('/JobList')
   }
   return (
     <div style={{

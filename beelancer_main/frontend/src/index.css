@@ -17,3 +17,38 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.pagination {
+  list-style: none;
+  display: flex;
+  justify-self: center;
+  align-items: center;
+  margin-bottom: 5rem;
+  font-size: 1.2rem;
+  gap: 5px;
+}
+
+.pagination .page-num {
+  padding: 8px 15px;
+  cursor: pointer;
+  border-radius: 3px;
+  font-weight: 400;
+}
+.pagination .page-num:hover {
+  background-color: #5ab1bb;
+  color: #fff;
+}
+
+.pagination .active {
+  background-color: #5ab1bb;
+}
+
+.page-numLink {
+  cursor: pointer;
+  text-transform: capitalize;
+  margin: 0 10px;
+  font-weight: 600;
+}
+
+.page-numLink:hover {
+  font-weight: 700;
+}
