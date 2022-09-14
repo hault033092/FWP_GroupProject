@@ -5,9 +5,12 @@ import styled from 'styled-components'
 import beelancer_logo from '../assets/svg/logo.svg'
 import Avatar from '../assets/images/Avatar.png'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
+
 export default function ProfileSetting() {
   //avatar profile 
     const [image,setImage] = useState(null)
+    const [startingImage,setStarting] = useState()
     const [preview,setPreview] = useState(Avatar)
     const fileInputRef = useRef(null)
     useEffect(()=>{
@@ -24,8 +27,8 @@ export default function ProfileSetting() {
     })
     const [name,setName] = useState("")
     const [userId,setUserId] = useState("631f4c84412d288586026ab9")
-    const [dateOfBirth,setDateOfBirth] = useState("14/09/2022")
-    const [address,setAddress] = useState("85 Duongwf so 2")
+    const [dateOfBirth,setDateOfBirth] = useState("")
+    const [address,setAddress] = useState("")
     //review
     const [reviewShown,setReviewShown] = useState(false);
     const handleReviewClick = event =>{
@@ -43,6 +46,8 @@ export default function ProfileSetting() {
     const [contactEmail, setEmail] = useState("")
     //submission check
     const [submited,setSubmitted] = useState(false)
+    //naviagte
+    const navigate = useNavigate();
     // add skill on button enter
   const addASkill = (event) => {
     if(skillInput == "")
@@ -63,11 +68,49 @@ export default function ProfileSetting() {
     setJobs((previous) => previous.concat(jobInput))
   }
 
-  const cURL = "http://localhost:8080/api/freelancer/createFreelancer"
-  
+  const cURL = "http://localhost:8080/api/freelancer/updateFreelancer/63222cf380e3b60caa1f3a85"
+  const rURL = "http://localhost:8080/api/freelancer/getFreelancer/63222cf380e3b60caa1f3a85"
+  const load = () =>{
+    axios.get(rURL,   {headers:{
+      'Content-Type': 'application/json',
+          'auth-token':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzFmNGM4NDQxMmQyODg1ODYwMjZhYjkiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NjMwNjA3NDR9.vUWXh262lz12tbp9E9ZIWr26sW6N3b62HXFwrECsUa0'
+       
+    }})
+    .then(
+      res => {
+        const data = res.data
+        setName(data.name)
+        setPhone(data.phoneNumber)
+        setEmail(data.email)
+        setDateOfBirth(data.dateOfBirth)
+        setEmail(data.email)
+        setAddress(data.address)
+        const s = data.personalSkills.split(",")
+        setSkills(s)
+        const j = data.bio.split(",")
+        setJobs(j)
+      }
+    )
+  }
+  useEffect(()=>{
+    load();
+  },[])
   const save = () =>{
-    console.log({
-      user: userId,
+
+    const data = new FormData();
+    data.append("user",userId);
+    data.append("avatar",image);
+    data.append("name",name);
+    data.append("phoneNumber",contactPhone)
+    data.append("dateOfBirth",dateOfBirth)
+    data.append("email",contactEmail)
+    data.append("address",address)
+    data.append("bio",jobs.toString())
+    data.append("personalSkills",skills.toString())
+    console.log(data)
+    console.log({     
+       user: userId,
+      avatar:image,
       name: name,
       phoneNumber: contactPhone,
       dateOfBirth: dateOfBirth,
@@ -76,15 +119,17 @@ export default function ProfileSetting() {
       bio: jobs.toString(),
       personalSkills: skills.toString()
     })
-    axios.put(cURL,{
-      user: userId,
-      name: name,
-      phoneNumber: contactPhone,
-      dateOfBirth: dateOfBirth,
-      email:contactEmail,
-      address: address,
-      bio: jobs.toString(),
-      personalSkills: skills.toString()
+    axios.patch(cURL,{
+      data
+      // user: userId,
+      // avatar:image,
+      // name: name,
+      // phoneNumber: contactPhone,
+      // dateOfBirth: dateOfBirth,
+      // email:contactEmail,
+      // address: address,
+      // bio: jobs.toString(),
+      // personalSkills: skills.toString()
     },
     
     {headers:{
@@ -94,6 +139,7 @@ export default function ProfileSetting() {
        
     }})
     .then(res => {
+      console.log("submission successful!")
       console.log(res)
     })
   }
@@ -124,6 +170,7 @@ export default function ProfileSetting() {
       return
     }
     save()
+    navigate('/FreelancerProfile')
   }
   //-----------------------------------------------------------------------------------
   return (
@@ -144,13 +191,16 @@ export default function ProfileSetting() {
             <div className='avatar'>
                 <img src={preview} alt="UserAvatar" />
                 <button className='overlay'
-                            onClick= {()=>{fileInputRef.current.click()}}
+                            onClick= {(event)=>{
+                              event.preventDefault()
+                              fileInputRef.current.click()}}
                 ></button>
-            <input type="file" name='images'accept='image/png,image/jpeg,image/webp' ref = {fileInputRef}
+            <input type="file" name='avatar'accept='image/png,image/jpeg,image/webp' ref = {fileInputRef}
             onChange = {(event) =>{
               const file = event.target.files[0]
               if(file)
               {
+                console.log(file)
                 setImage(file)
               }
               else{
@@ -165,7 +215,7 @@ export default function ProfileSetting() {
                 <input
                 type='text'
                 id='name'
-                name='name'
+                value={name}
                 placeholder='Fullname.'
                 onChange={(e) => setName(e.target.value)}
                 />
@@ -190,7 +240,8 @@ export default function ProfileSetting() {
                   <SkillStyle>
                     <p>{s}</p>
                     <button
-                      onClick={() => {
+                      onClick={(event) => {
+                        event.preventDefault()
                         setSkills(skills.filter((e) => e != s))
                       }}
                     >
@@ -223,7 +274,15 @@ export default function ProfileSetting() {
             <div className='jobTitleHolder'>
                 {jobs.map((job) =>{
                     return(
-                        <p>{job}</p>
+                        <p>{job}                     
+                        <button className='removeButton'
+                        onClick={(event) => {
+                          event.preventDefault()
+                          setJobs(jobs.filter((e) => e != job))
+                        }}
+                      >
+                        ✖
+                      </button></p>
                     )
                 })}
             </div>
@@ -258,6 +317,7 @@ export default function ProfileSetting() {
                 id='phoneNumber'
                 name='phoneNumber'
                 placeholder='1900 1234 56'
+                value={contactPhone}
                 onChange={(e) => setPhone(e.target.value)}
                 />
             <h4>Contact email:</h4>
@@ -265,6 +325,7 @@ export default function ProfileSetting() {
                 type='text'
                 id='contactEmail'
                 name='contactEmail'
+                value ={contactEmail}
                 placeholder='example@email.com'
                 onChange={(e) => setEmail(e.target.value)}
                 />
@@ -567,6 +628,16 @@ const TextBox = styled.section`
         font-weight: 400;
         font-size: 14px;
         color: black;
+    }
+    .removeButton{
+      color: #e8aa0c;
+      background-color: transparent;
+      border: none;
+      font-size: 18px;
+      text-align: center;
+      align-items: center;
+      margin-left: 5px;
+      cursor: pointer;
     }
     //background-color: bisque;
     margin-bottom: 10px;

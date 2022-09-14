@@ -1,14 +1,69 @@
-import React from 'react'
-import Header from '../components/Header/Header'
-import Footer from '../components/Footer'
+import React, { useState,useEffect } from 'react'
+
 import styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
 //background
 import Working from '../assets/Working.svg'
 //avatar
 import Avatar from '../assets/images/Avatar.png'
+import axios from 'axios'
 
 export default function FreelancerProfile() {
+  const [avatar,setAvatar] = useState("")
+  const [defaultUse,setDefaultUse] = useState(true)
+  const [name,setName] = useState("")
+  //skill
+  const [skills, setSkills] = useState([])
+  //
+  const [jobs, setJobs] = useState([])
+  //
+  const [contactPhone, setPhone] = useState("")
+  const [contactEmail, setEmail] = useState("")
+  const rURL = "http://localhost:8080/api/freelancer/getFreelancer/63222cf380e3b60caa1f3a85"
+  const load = () =>{
+    axios.get(rURL,   {headers:{
+      'Content-Type': 'application/json',
+
+          'auth-token':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzFmNGM4NDQxMmQyODg1ODYwMjZhYjkiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NjMwNjA3NDR9.vUWXh262lz12tbp9E9ZIWr26sW6N3b62HXFwrECsUa0'
+       
+    }})
+    .then(
+      res => {
+        const data = res.data
+        if(data.avatar !== undefined)
+        {
+          setDefaultUse(false)
+          //console.log("or this")
+        setAvatar(btoa(String.fromCharCode(...new Uint8Array(data.avatar.data))))
+        //console.log("or this: "+ avatar)
+        }
+        else{
+          setDefaultUse(true)
+        }
+        setName(data.name)
+        setPhone(data.phoneNumber)
+        setEmail(data.email)
+        const s = data.personalSkills.split(",")
+        setSkills(s)
+        const j = data.bio.split(",")
+        setJobs(j)
+      }
+    )
+  }
+  useEffect(()=>{
+    load();
+  },[])
+  function AvatarDisplay()
+  {
+    if(defaultUse)
+    {
+      
+      return <img src={Avatar} alt='UserAvatar' />
+    }
+    else{
+      return <img src={`data:image/png;base64,${avatar}`} alt='UserAvatar' />
+    }
+  }
   return (
     <div>
       <Body>
@@ -18,23 +73,24 @@ export default function FreelancerProfile() {
             <div className='Avatar'>
               <div className='Circle' id='Circle1'></div>
               <div className='Circle' id='Circle2'>
-                <img src={Avatar} alt='UserAvatar' />
+                <AvatarDisplay />
               </div>
             </div>
             <div className='Titles'>
-              <h2>Programmer</h2>
-              <h2>Game Developer</h2>
-              <h2>C# Programmer</h2>
+              {
+                jobs.map((job)=>
+                <h2>{job}</h2>)
+              }
             </div>
           </LeftPanel>
           <RightPanel>
-            <h1>Bill Gates</h1>
+            <h1>{name}</h1>
             <h3>What I am good at</h3>
             <div className='skills'>
-              <p>C#</p>
-              <p>UI,UX Design</p>
-              <p>JavaScript</p>
-              <p>Some skills</p>
+            {
+              skills.map((skill)=>
+              <p>{skill}</p>
+            )}
             </div>
             <h3>What client says about me</h3>
             <div className='review'>
@@ -54,11 +110,11 @@ export default function FreelancerProfile() {
             <div className='contact'>
               <div className='contactBox'>
                 <h4>Phone Number: </h4>
-                <p>093012973</p>
+                <p>{contactPhone}</p>
               </div>
               <div className='contactBox'>
                 <h4>Contact Email: </h4>
-                <p>example@example.com</p>
+                <p>{contactEmail}</p>
               </div>
             </div>
           </RightPanel>

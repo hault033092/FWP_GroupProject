@@ -5,7 +5,9 @@ const freelancerSchema = new mongoose.Schema(
     user: {
       type: mongoose.Types.ObjectId,
     },
-    avatar: {},
+    avatar: {
+      type:Buffer,
+    },
     name: {
       type: String,
       required: true,

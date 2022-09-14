@@ -2,8 +2,22 @@ const router = require('express').Router()
 const Freelancer = require('../model/freelancer.model')
 const verify = require('../helper/verifyToken')
 const { registerValidation, loginValidation } = require('../helper/validation')
-
-// Get all freelancers
+const multer = require('multer')
+const fs = require('fs')
+const { db } = require('../model/freelancer.model')
+const upload = multer({dest:'uploads/'})
+// const storage = multer.diskStorage({
+//   destination: function(req,file,cb)
+//   {
+//     cb(null,'./uploads/');
+//   },
+//   filename: function(req,file,cb)
+//   {
+//     cb(null,new Date().toISOString() + file.originalname);
+//   }
+// })
+// const upload = multer({storage: storage});
+// Get all post
 router.get('/getFreelancers', verify, async (req, res) => {
   try {
     const foundFreelancer = await Freelancer.find()
@@ -13,8 +27,8 @@ router.get('/getFreelancers', verify, async (req, res) => {
   }
 })
 
-// Get freelancer by id
-router.get('/getFreelancerById/:freelancerId', verify, async (req, res) => {
+// Get post by id
+router.get('/getFreelancer/:freelancerId', verify, async (req, res) => {
   try {
     const foundFreelancer = await Freelancer.findOne({
       _id: req.params.freelancerId,
@@ -25,23 +39,11 @@ router.get('/getFreelancerById/:freelancerId', verify, async (req, res) => {
   }
 })
 
-// Get freelancer by user id
-router.get('/getFreelancerByUser/:userId', verify, async (req, res) => {
-  try {
-    const foundFreelancer = await Freelancer.findOne({
-      _id: req.params.userId,
-    })
-    res.json(foundFreelancer)
-  } catch (error) {
-    res.json({ message: error })
-  }
-})
-
-// Create freelancer
+// Create postW
 router.post('/createFreelancer', verify, async (req, res) => {
   //   const { error } = postValidate(req.body)
   //   if (error) return res.status(400).send(error.details[0].message)
-
+  
   const newFreelancer = new Freelancer({
     user: req.user._id,
     name: req.body.name,
@@ -62,7 +64,7 @@ router.post('/createFreelancer', verify, async (req, res) => {
   }
 })
 
-// Delete freelancer
+// Delete post
 router.delete('/deleteFreelancer/:freelancerId', verify, async (req, res) => {
   try {
     await Freelancer.deleteOne({
@@ -74,9 +76,23 @@ router.delete('/deleteFreelancer/:freelancerId', verify, async (req, res) => {
   }
 })
 
-// Update freelancer
-router.put('/updateFreelancer/:freelancerId', verify, async (req, res) => {
+// Update post
+router.patch('/updateFreelancer/:freelancerId',upload.single('avatar'), verify, async (req, res) => {
+  console.log("avatar is")
+  console.log(req.body.avatar)
+  console.log(req.file)
+  console.log("content:")
+  console.log({
+    name: req.body.name,
+    phoneNumber: req.body.phoneNumber,
+    dateOfBirth: req.body.dateOfBirth,
+    email: req.body.email,
+    address: req.body.address,
+    bio: req.body.bio,
+    personalSkills: req.body.personalSkills,
+  })
   try {
+    console.log("check here")
     await Freelancer.updateOne(
       {
         _id: req.params.freelancerId,
@@ -90,9 +106,11 @@ router.put('/updateFreelancer/:freelancerId', verify, async (req, res) => {
           address: req.body.address,
           bio: req.body.bio,
           personalSkills: req.body.personalSkills,
+          //avatar: fs.readFileSync("uploads/"+ req.file.filename),
         },
       }
     )
+    console.log("updated")
     res.send('Freelancer Updated!')
   } catch (error) {
     res.json({ message: error })
