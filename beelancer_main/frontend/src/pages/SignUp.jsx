@@ -6,11 +6,52 @@ import Logo from '../assets/svg/logo.svg'
 
 const SignUp = () => {
   const [activeButton, setActiveButton] = useState('false')
+  //api content
+  const [name,setName] = useState("")
+  const [email,setEmail] = useState("")
+  const [phone,setPhone] = useState("")
+  const [password,setPassword] = useState("")
+  //
+  const [confirmPassword,setconfirm] = useState("")
+  const [passCheck,setPassCheck] = useState(true)
+  const [dob,setDob] = useState("")
+  const [country,setCountry] = useState("")
+  const [address, setAddress] = useState("")
+  //
+  const [postCode,setPostCode] = useState("")
 
   const toggleActiveButton = () => {
     setActiveButton(!activeButton)
   }
-
+  const checkPassword = (e)=>
+  {
+    e.preventDefault()
+    //set confirm
+    setconfirm(e.target.value)
+    //compare
+    if(password == e.target.value)
+    {
+      setPassCheck(true)
+    }
+    else{
+      setPassCheck(false)
+    }
+  }
+  function PassWarning(){
+    if(!passCheck)
+    {
+      return<p className='warning'>not correct to your password</p>
+    }
+  }
+  //saving
+  const userURL= "http://localhost:8080/api/user/signup"
+  const freelancerURL = "localhost:8080/api/freelancer/createFreelancer"
+  const clientURL = ""
+  const HandleSubmit=(event)=>
+  {
+    event.preventDefault()
+    //save usser
+  }
   return (
     <SignUpContainer>
       <SignUpContent>
@@ -40,6 +81,7 @@ const SignUp = () => {
                 placeholder='Enter full name'
                 maxlength='50'
                 isRequired
+                onChange={(e)=>{setName(e.target.value)}}
               ></InputField>
             </InputGroup>
             <InputGroup>
@@ -49,6 +91,7 @@ const SignUp = () => {
                 type='email'
                 placeholder='Enter email address'
                 maxlength='30'
+                onChange={(e)=>{setEmail(e.target.value)}}
                 isRequired
               ></InputField>
             </InputGroup>
@@ -59,6 +102,7 @@ const SignUp = () => {
                 type='tel'
                 placeholder='Enter phone number'
                 maxlength='50'
+                onChange={(e)=>{setPhone(e.target.value)}}
                 isRequired
               ></InputField>
             </InputGroup>
@@ -69,6 +113,7 @@ const SignUp = () => {
                 type='password'
                 placeholder='Enter password'
                 maxlength='30'
+                onChange={(e)=>{setPassword(e.target.value)}}
                 isRequired
               ></InputField>
             </InputGroup>
@@ -79,8 +124,10 @@ const SignUp = () => {
                 type='password'
                 placeholder='Re-type password'
                 maxlength='30'
+                onChange={(e)=>{checkPassword(e)}}
                 isRequired
               ></InputField>
+                            <PassWarning />
             </InputGroup>
           </FormColumn>
           <FormColumn>
@@ -92,26 +139,29 @@ const SignUp = () => {
                 placeholder='Enter Date of Birth'
                 min='1922-01-01'
                 max='2004-12-31'
+                onChange={(e)=>{setDob(e.target.value)}}
                 isRequired
               ></InputField>
             </InputGroup>
             <InputGroup>
-              <Label htmlFor='country'>Location</Label>
+              <Label htmlFor='country'>Country</Label>
               <InputField
                 id='country'
                 type='text'
-                placeholder='Country/City'
+                placeholder='Country'
                 maxlength='100'
+                onChange={(e)=>{setCountry(e.target.value)}}
                 isRequired
               ></InputField>
             </InputGroup>
             <InputGroup>
-              <Label htmlFor='district'>District</Label>
+              <Label htmlFor='district'>Address</Label>
               <InputField
                 id='district'
                 type='text'
-                placeholder='District/Ward'
+                placeholder='Address'
                 maxlength='50'
+                onChange={(e)=>{setAddress(e.target.value)}}
                 isRequired
               ></InputField>
             </InputGroup>
@@ -122,6 +172,7 @@ const SignUp = () => {
                 placeholder='Postcode/Street'
                 rows='7'
                 maxlength='100'
+                onChange={(e)=>{setPostCode(e.target.value)}}
                 isRequired
               ></TextArea>
             </InputGroup>
@@ -274,13 +325,14 @@ const InputField = styled.input`
   width: 100%;
   display: flex;
   justify-content: center;
-  padding: 1rem 1rem;
+  padding: 10px 20px;
   border-radius: 1rem;
   border: 1px solid #e59f17;
   transition: 0.25s ease-in-out;
-
+  
   &:focus {
-    background-color: powderblue;
+    background-color: rgba(229, 159, 23, 0.2);
+    outline: none;
   }
 
   &[type='date'] {
@@ -292,16 +344,24 @@ const InputGroup = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
+  .warning{
+    color:red;
+    margin-left: 20px;
+    font-size: 14px;
+   
+  }
 `
 
 const TextArea = styled.textarea`
   padding: 0.9rem 0.9rem;
-  border-radius: 1rem;
+  border-radius: 10px 20px;
   border: 1px solid #e59f17;
   transition: 0.25s ease-in-out;
-
+  height: 100px;
+  resize:none;
   &:focus {
-    background-color: powderblue;
+    background-color: rgba(229, 159, 23, 0.2);
+    outline: none;
   }
 `
 
