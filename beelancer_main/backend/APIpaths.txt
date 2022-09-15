@@ -1,7 +1,8 @@
 // User
-localhost:8080/api/user/getUsers
+
 localhost:8080/api/user/signin
 localhost:8080/api/user/signup
+localhost:8080/api/user/getUsers
 localhost:8080/api/user/updateUser/:userId
 localhost:8080/api/user/deleteUser/:userId
 

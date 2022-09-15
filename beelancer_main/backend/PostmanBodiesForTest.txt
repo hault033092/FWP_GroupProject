@@ -1,7 +1,7 @@
 // Login
 {
-    "email": "haule123456@gmail.com",
-    "password": "haule1234"
+    "email": "",
+    "password": ""
 }
 
 // Create post
@@ -14,7 +14,7 @@
     "isApplied": true
 }
 
-// Freelancer
+// Freelancer creating body
 {
     "email": "",
     "password": "",
@@ -25,15 +25,17 @@
     "address": "",
     "bio": "",
     "personalSkills": ""
+
+    eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIzMmM5ZTJkNGFmNzUxMzQ2MWZhZTQiLCJyb2xlIjoiRlJFRUxBTkNFUiIsImlhdCI6MTY2MzI1MDAwMX0.XZaYIowV0YIUEN-Q9AyzQWagsm5Fdti4GIBAWaD_nwU
     
-    eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIzMmMzYzJkNGFmNzUxMzQ2MWZhZTAiLCJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNjYzMjUwMDM1fQ.rSi7M-EoWZQ93-KZ_nWkFzYQNgqAamW5lzxCtZL4x6o
 }
 
 // Client
+{
     "email": "",
     "password": "",
     "role": "CLIENT",
     "name": "",
     "phone": ""
-
-    eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIzMmM5ZTJkNGFmNzUxMzQ2MWZhZTQiLCJyb2xlIjoiRlJFRUxBTkNFUiIsImlhdCI6MTY2MzI1MDAwMX0.XZaYIowV0YIUEN-Q9AyzQWagsm5Fdti4GIBAWaD_nwU
+}
+    eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIzMmMzYzJkNGFmNzUxMzQ2MWZhZTAiLCJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNjYzMjUwMDM1fQ.rSi7M-EoWZQ93-KZ_nWkFzYQNgqAamW5lzxCtZL4x6o

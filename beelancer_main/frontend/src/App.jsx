@@ -16,8 +16,8 @@ const App = () => {
     <>
       {/* <FreelancerProfile /> */}
       <Header />
-     <Pages />
-      
+      <Pages />
+      <JobPost />
       <Footer />
     </>
   )
