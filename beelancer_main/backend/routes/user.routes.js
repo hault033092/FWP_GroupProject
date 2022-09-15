@@ -3,6 +3,10 @@ const User = require('../model/user.model')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
 const { registerValidation, loginValidation } = require('../helper/validation')
+const multer = require('multer')
+const fs = require('fs')
+// const { db } = require('../model/freelancer.model')
+const upload = multer({ dest: 'uploads/' })
 
 // Create a user with validation
 router.post('/signup', async (req, res) => {
@@ -97,6 +101,31 @@ router.delete('/:userId', async (req, res) => {
     res.json({ message: error })
   }
 })
+//
+router.patch(
+  '/updateUserAvatar/:userID',
+  upload.single('avatar'),
+  async (req, res) => {
+    try {
+      await User.updateOne(
+        {
+          _id: req.params.userID,
+        },
+        {
+          $set: {
+            avatar: fs.readFileSync('uploads/' + req.file.filename),
+          },
+        }
+      )
+      console.log("file checking:")
+      console.log(avatar)
+      //console.log("updated")
+      res.send('Freelancer Updated!')
+    } catch (error) {
+      res.json({ message: error })
+    }
+  }
+)
 
 // Find user by ID and update said user's attributes
 router.patch('/updateProfile/:userID', async (req, res) => {

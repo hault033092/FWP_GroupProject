@@ -1,10 +1,69 @@
-import React from 'react'
+import { React, useState } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 
 import Logo from '../assets/svg/logo.svg'
+import axios from 'axios'
+
 
 const SignIn = () => {
+
+  const [email,setEmail] = useState("")
+  const [pass,setPass] = useState("")
+  //submit
+  const [submit,setSubmit] = useState(false)
+  const navigate = useNavigate();
+  //URL
+  const URL = "http://localhost:8080/api/user/signin"
+  const handleSubmit = (event) =>{
+    event.preventDefault()
+    //
+    setSubmit(true)
+    if(email === "" || pass ==="")
+    {
+      return
+    }
+    //sign in
+    axios.post(URL,{
+      email:email,
+      password:pass
+    }).then(res => {console.log(res)})
+    .catch((error) => {
+      // Error
+      if (error.response) {
+        //console.log("some thing here")
+        return
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          // console.log(error.response.data);
+          // console.log(error.response.status);
+          // console.log(error.response.headers);
+      } else if (error.request) {
+        //console.log("or here")
+          // The request was made but no response was received
+          // `error.request` is an instance of XMLHttpRequest in the 
+          // browser and an instance of
+          // http.ClientRequest in node.js
+          //console.log(error.request);
+      } else {
+
+          // Something happened in setting up the request that triggered an Error
+          //console.log('Error', error.message);
+      }
+      console.log(error.config);
+  });
+
+  //navigate to user profile
+  navigate("/profileSetting")
+  }
+  function SubmitWarning(){
+    if(submit)
+    {
+      //console.log("check submit")
+      return <p className='warning'>Email or password not correct!</p>
+    }
+  }
   return (
     <SignInContainer>
       <SignInContent>
@@ -17,6 +76,7 @@ const SignIn = () => {
               id='email'
               type='email'
               placeholder='Enter email address'
+              onChange={(e)=>{setEmail(e.target.value)}}
               isRequired
             ></InputField>
           </InputGroup>
@@ -26,6 +86,7 @@ const SignIn = () => {
               id='password'
               type='password'
               placeholder='Enter password'
+              onChange={(e)=>{setPass(e.target.value)}}
               isRequired
             ></InputField>
           </InputGroup>
@@ -40,7 +101,8 @@ const SignIn = () => {
           </PasswordField>
         </MainForm>
         <SignInField>
-          <SignInButton>Sign In</SignInButton>
+          <SubmitWarning />
+          <SignInButton onClick={(event)=>{handleSubmit(event)}}>Sign In</SignInButton>
           <SignUpField>
             <Text>New to our Hive?</Text>
             <RedirectLink to='/SignUp'>Sign Up</RedirectLink>
@@ -171,7 +233,11 @@ const SignInField = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-
+  .warning{
+    color:red;
+    font-size: 14px;
+    text-align: center;
+  }
   @media screen and (max-width: 1199px) {
     width: 75%;
   }
@@ -181,6 +247,7 @@ const SignUpField = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
+
 `
 
 const SignInButton = styled.button`

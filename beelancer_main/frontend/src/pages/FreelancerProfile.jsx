@@ -19,11 +19,9 @@ export default function FreelancerProfile() {
   //
   const [contactPhone, setPhone] = useState("")
   const [contactEmail, setEmail] = useState("")
-  const rURL = "http://localhost:8080/api/freelancer/getFreelancer/63222cf380e3b60caa1f3a85"
+  const rURL = "http://localhost:8080/api/user/getUser/632342b96953ce6b95a4e941"
   const load = () =>{
     axios.get(rURL,   {headers:{
-      'Content-Type': 'application/json',
-
           'auth-token':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzFmNGM4NDQxMmQyODg1ODYwMjZhYjkiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NjMwNjA3NDR9.vUWXh262lz12tbp9E9ZIWr26sW6N3b62HXFwrECsUa0'
        
     }})
@@ -41,12 +39,18 @@ export default function FreelancerProfile() {
           setDefaultUse(true)
         }
         setName(data.name)
-        setPhone(data.phoneNumber)
+        setPhone(data.phone)
         setEmail(data.email)
+        if(data.personalSkills !== undefined)
+        {
         const s = data.personalSkills.split(",")
         setSkills(s)
+        }
+        if(data.bio !== undefined)
+        {
         const j = data.bio.split(",")
         setJobs(j)
+        }
       }
     )
   }
@@ -57,7 +61,6 @@ export default function FreelancerProfile() {
   {
     if(defaultUse)
     {
-      
       return <img src={Avatar} alt='UserAvatar' />
     }
     else{
@@ -95,14 +98,7 @@ export default function FreelancerProfile() {
             <h3>What client says about me</h3>
             <div className='review'>
               <p className='content'>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book. It has
-                survived not only five centuries, but also the leap into
-                electronic typesetting, remaining essentially unchanged. It was
-                popularised in the 1960s with the release of Letraset sheets
-                containing Lorem Ipsum passages,
+              Thank you so much for helping out with my customers while I've been away. It's such a good feeling to know that we can take time out when needed and the team are here to not just support our customers but support each other too. 
               </p>
               <p className='author'>Tywin Lanister</p>
             </div>
