@@ -81,9 +81,9 @@ export default function ProfileSetting() {
     setJobs((previous) => previous.concat(jobInput))
   }
 
-  const cURL = "http://localhost:8080/api/freelancer/updateFreelancer/63222cf380e3b60caa1f3a85"
-  const rURL = "http://localhost:8080/api/freelancer/getFreelancer/63222cf380e3b60caa1f3a85"
-  const aURL = "http://localhost:8080/api/freelancer/updateFreelancerAvatar/63222cf380e3b60caa1f3a85"
+  const cURL = "http://localhost:8080/api/user/updateProfile/632342b96953ce6b95a4e941"
+  const rURL = "http://localhost:8080/api/user/getUser/632342b96953ce6b95a4e941"
+  const aURL = "http://localhost:8080/api/user/updateUserAvatar/632342b96953ce6b95a4e941"
   const load = () => {
     axios.get(rURL, {
       headers: {
@@ -106,15 +106,21 @@ export default function ProfileSetting() {
             setDefaultUse(0)
           }
           setName(data.name)
-          setPhone(data.phoneNumber)
+          setPhone(data.phone)
           setEmail(data.email)
           setDateOfBirth(data.dateOfBirth)
           setEmail(data.email)
           setAddress(data.address)
+          if(data.personalSkills !==undefined)
+          {
           const s = data.personalSkills.split(",")
           setSkills(s)
+          }
+          if(data.bio !== undefined)
+          {
           const j = data.bio.split(",")
           setJobs(j)
+          }
         }
       )
   }
@@ -179,7 +185,7 @@ export default function ProfileSetting() {
 
       }
     }).then(res => {
-      //console.log("submission successful!")
+      console.log("submission successful!")
       console.log(res)
     })
   }
