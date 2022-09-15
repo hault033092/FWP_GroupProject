@@ -28,7 +28,8 @@ const SignIn = () => {
     axios.post(URL,{
       email:email,
       password:pass
-    }).then(res => {console.log(res)})
+    }).then(res => {console.log(res)
+    console.log(res.token)})
     .catch((error) => {
       // Error
       if (error.response) {
