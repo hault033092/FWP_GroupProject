@@ -27,6 +27,7 @@ export default function FreelancerProfile() {
     }})
     .then(
       res => {
+        console.log(res.token)
         const data = res.data
         if(data.avatar !== undefined)
         {
