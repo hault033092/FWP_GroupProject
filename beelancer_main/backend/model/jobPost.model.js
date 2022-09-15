@@ -2,8 +2,9 @@ const mongoose = require('mongoose')
 
 const jobPostSchema = new mongoose.Schema(
   {
-    client: {
+    userId: {
       type: mongoose.Types.ObjectId,
+      ref: 'User',
     },
     title: {
       type: String,

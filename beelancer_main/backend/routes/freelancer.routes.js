@@ -1,10 +1,11 @@
 const router = require('express').Router()
-const Freelancer = require('../model/freelancer.model')
+const User = require('../model/user.model')
+const Rating = require('../model/rating.model')
 const verify = require('../helper/verifyToken')
 const { registerValidation, loginValidation } = require('../helper/validation')
 const multer = require('multer')
 const fs = require('fs')
-const { db } = require('../model/freelancer.model')
+// const { db } = require('../model/freelancer.model')
 const upload = multer({ dest: 'uploads/' })
 
 // Get all freelancers
@@ -20,10 +21,26 @@ router.get('/getFreelancers', verify, async (req, res) => {
 // Get freelancer by id
 router.get('/getFreelancer/:freelancerId', verify, async (req, res) => {
   try {
-    const foundFreelancer = await Freelancer.findOne({
-      _id: req.params.freelancerId,
-    })
-    res.json(foundFreelancer)
+    const foundFreelancer = await User.findOne({
+      _id: req.params.userId,
+    }).lean()
+    if (foundFreelancer.role == 'CLIENT') {
+      const rating = await Rating.find({
+        userId: foundFreelancer._id,
+      }).lean()
+
+      res.json({
+        id: foundFreelancer._id,
+        name: foundFreelancer.name,
+        phone: foundFreelancer.phone,
+        role: foundFreelancer.role,
+        rating: rating,
+      })
+    } else {
+      res.json({
+        id: foundFreelancer._id,
+      })
+    }
   } catch (error) {
     res.json({ message: error })
   }
@@ -62,6 +79,8 @@ router.delete('/deleteFreelancer/:freelancerId', verify, async (req, res) => {
     res.json({ message: error })
   }
 })
+
+// Update avatar
 router.patch(
   '/updateFreelancerAvatar/:freelancerId',
   upload.single('avatar'),
@@ -84,6 +103,7 @@ router.patch(
     }
   }
 )
+
 // Update freelancer
 router.patch('/updateFreelancer/:freelancerId', verify, async (req, res) => {
   try {

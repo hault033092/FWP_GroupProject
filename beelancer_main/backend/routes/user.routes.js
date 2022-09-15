@@ -23,9 +23,15 @@ router.post('/signup', async (req, res) => {
   const hashedPassword = await bcrypt.hash(req.body.password, salt)
 
   const user = new User({
-    // userName: req.body.userName,
     email: req.body.email,
     password: hashedPassword,
+    name: req.body.name,
+    phone: req.body.phone,
+    role: req.body.role,
+    dateOfBirth: req.body.dateOfBirth,
+    address: req.body.address,
+    bio: req.body.bio,
+    personalSkills: req.body.personalSkills,
   })
 
   try {
@@ -36,13 +42,13 @@ router.post('/signup', async (req, res) => {
   }
 })
 
-//User login
+// User login
 router.post('/signin', async (req, res) => {
   //
   const { error } = loginValidation(req.body)
   if (error) return res.status(400).send(error.details[0].message)
   //
-  const foundUser = await User.findOne({ email: req.body.email })
+  const foundUser = await User.findOne({ email: req.body.email }).lean()
   if (!foundUser) return res.status(400).send('Incorrect email!')
   //
   const validPassword = await bcrypt.compare(
@@ -53,13 +59,16 @@ router.post('/signin', async (req, res) => {
 
   //Create token
   const token = jwt.sign(
-    { _id: foundUser._id, role: 'admin' },
+    {
+      _id: foundUser._id,
+      role: foundUser.role,
+    },
     process.env.TOKEN_SECRET
   )
   res.header('auth-token', token).send(token)
 })
 
-//Get all users
+// Get all users
 router.get('/getUsers', async (req, res) => {
   try {
     const gotUsers = await User.find()
@@ -69,7 +78,7 @@ router.get('/getUsers', async (req, res) => {
   }
 })
 
-//Get user by a specific ID
+// Get user by a specific ID
 router.get('/getUser/:userId', async (req, res) => {
   try {
     const user = await User.findById(req.params.userId)
@@ -79,7 +88,7 @@ router.get('/getUser/:userId', async (req, res) => {
   }
 })
 
-//Delete specific users (all if necessary) by ID
+// Delete specific users (all if necessary) by ID
 router.delete('/:userId', async (req, res) => {
   try {
     const removedUser = await User.remove({ _id: req.params.userId }) //Mongo generates id by this format
@@ -89,7 +98,7 @@ router.delete('/:userId', async (req, res) => {
   }
 })
 
-//Find user by ID and update said user's attributes
+// Find user by ID and update said user's attributes
 router.patch('/updateProfile/:userID', async (req, res) => {
   try {
     const userID = req.params.userID

@@ -1,7 +1,6 @@
 const router = require('express').Router()
 const verify = require('../helper/verifyToken')
 const JobPost = require('../model/jobPost.model')
-// const { postValidate } = require('../helper/validation')
 
 // Get all post
 router.get('/getPosts', verify, async (req, res) => {
@@ -16,7 +15,9 @@ router.get('/getPosts', verify, async (req, res) => {
 // Get post by id
 router.get('/getPostById/:postId', verify, async (req, res) => {
   try {
-    const gotPost = await JobPost.findOne({ _id: req.params.postId })
+    const gotPost = await JobPost.findOne({ _id: req.params.postId }).populate(
+      'client'
+    )
     res.json(gotPost)
   } catch (error) {
     res.json({ message: error })
@@ -25,11 +26,8 @@ router.get('/getPostById/:postId', verify, async (req, res) => {
 
 // Create post
 router.post('/createPost', verify, async (req, res) => {
-  //   const { error } = postValidate(req.body)
-  //   if (error) return res.status(400).send(error.details[0].message)
-
   const newPost = new JobPost({
-    client: req.user._id,
+    client: req.client._id,
     title: req.body.title,
     description: req.body.description,
     jobCategory: req.body.jobCategory,
@@ -37,8 +35,7 @@ router.post('/createPost', verify, async (req, res) => {
     budget: req.body.budget,
     isApplied: req.body.isApplied,
   })
-  //console.log("check post: "+newPost)
-  //
+
   try {
     await newPost.save()
     res.send({ newPost })

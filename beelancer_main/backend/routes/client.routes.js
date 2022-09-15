@@ -1,9 +1,10 @@
 const router = require('express').Router()
-const Client = require('../model/client.model')
+const User = require('../model/user.model')
+const JobPost = require('../model/jobPost.model')
 const verify = require('../helper/verifyToken')
 const { registerValidation, loginValidation } = require('../helper/validation')
 
-// Get all post
+// Get all client
 router.get('/getClients', verify, async (req, res) => {
   try {
     const foundClient = await Client.find()
@@ -13,19 +14,35 @@ router.get('/getClients', verify, async (req, res) => {
   }
 })
 
-// Get post by id
-router.get('/getClient/:clientId', verify, async (req, res) => {
+// Get client by id
+router.get('/getClient/:userId', verify, async (req, res) => {
   try {
-    const foundClient = await Client.findOne({
-      _id: req.params.clientId,
-    })
-    res.json({ client: foundClient })
+    const foundClient = await User.findOne({
+      _id: req.params.userId,
+    }).lean()
+    if (foundClient.role == 'CLIENT') {
+      const jobPosts = await JobPost.find({
+        userId: foundClient._id,
+      }).lean()
+
+      res.json({
+        id: foundClient._id,
+        name: foundClient.name,
+        phone: foundClient.phone,
+        role: foundClient.role,
+        jobPosts: jobPosts,
+      })
+    } else {
+      res.json({
+        id: foundClient._id,
+      })
+    }
   } catch (error) {
     res.json({ message: error })
   }
 })
 
-// Create postW
+// Create client
 router.post('/createClient', verify, async (req, res) => {
   const newClient = new Client({
     user: req.user._id,
@@ -43,7 +60,7 @@ router.post('/createClient', verify, async (req, res) => {
   }
 })
 
-// Delete post
+// Delete client
 router.delete('/deleteClient/:freelancerId', verify, async (req, res) => {
   try {
     await Client.deleteOne({
@@ -55,7 +72,7 @@ router.delete('/deleteClient/:freelancerId', verify, async (req, res) => {
   }
 })
 
-// Update post
+// Update client
 router.patch('/updateClient/:clientdId', verify, async (req, res) => {
   try {
     //console.log("check here")

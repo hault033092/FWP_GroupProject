@@ -6,6 +6,13 @@ const registerValidation = (data) => {
     // userName: Joi.string().min(6).required(),
     email: Joi.string().min(6).required().email(),
     password: Joi.string().min(6).required(),
+    role: Joi.string(),
+    name: Joi.string(),
+    phone: Joi.string(),
+    dateOfBirth: Joi.string(),
+    address: Joi.string(),
+    bio: Joi.string(),
+    personalSkills: Joi.string(),
   })
   return schema.validate(data)
 }
@@ -39,4 +46,3 @@ const postValidate = (data) => {
 module.exports.registerValidation = registerValidation
 module.exports.loginValidation = loginValidation
 module.exports.passwordValidate = passwordValidate
-module.exports.postValidate = postValidate
