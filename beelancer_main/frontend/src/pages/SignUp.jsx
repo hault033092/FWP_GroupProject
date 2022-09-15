@@ -1,9 +1,9 @@
 import { React, useState } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-
+import axios from 'axios'
 import Logo from '../assets/svg/logo.svg'
-
+import { useNavigate } from 'react-router-dom';
 const SignUp = () => {
   const [activeButton, setActiveButton] = useState('false')
   //api content
@@ -19,7 +19,9 @@ const SignUp = () => {
   const [address, setAddress] = useState("")
   //
   const [postCode,setPostCode] = useState("")
-
+  //submit control
+  const [submit,setSubmit] = useState(false)
+  const navigate = useNavigate();
   const toggleActiveButton = () => {
     setActiveButton(!activeButton)
   }
@@ -45,12 +47,41 @@ const SignUp = () => {
   }
   //saving
   const userURL= "http://localhost:8080/api/user/signup"
-  const freelancerURL = "localhost:8080/api/freelancer/createFreelancer"
-  const clientURL = ""
+  //const freelancerURL = "localhost:8080/api/freelancer/createFreelancer"
   const HandleSubmit=(event)=>
   {
     event.preventDefault()
+    setSubmit(true)
+    const role = (!activeButton)? "CLIENT": "FREELANCER"
+    if(!passCheck)
+    {
+      return;//do not allow sending when confirm failed
+    }
+    if(email === ""|| password===""|| name ===""|| phone ===""||dob ===""||address ==="")
+    {
+      return;//due to missing field
+    }
     //save usser
+    axios.post(userURL,{
+      email: email,
+      password: password,
+      name: name,
+      phone: phone,
+      role: role,
+      dateOfBirth: dob,
+      address: address ,
+    }).then(res =>{
+      console.log(res)
+    })
+    //navigate to sign in
+    navigate("/SignIn")
+  }
+  function SubmitWarning()
+  {
+    if(submit)
+    {
+      return <p className='warning'>A field might be missing</p>
+    }
   }
   return (
     <SignUpContainer>
@@ -179,7 +210,8 @@ const SignUp = () => {
           </FormColumn>
         </MainForm>
         <SignUpField>
-          <SignUpButton>Sign Up</SignUpButton>
+          <SubmitWarning />
+          <SignUpButton onClick={(event)=>{HandleSubmit(event)}} >Sign Up</SignUpButton>
           <SignInField>
             <Text>Already a Beelancer?</Text>
             <RedirectLink to='/SignIn'>Sign In</RedirectLink>
@@ -371,6 +403,13 @@ const SignUpField = styled.div`
   justify-content: center;
   flex-direction: column;
 
+  .warning{
+    color:red;
+    font-weight: thin;
+    justify-content: center;
+    text-align: center;
+    font-size: 14px;
+  }
   @media screen and (max-width: 1199px) {
     width: 75%;
   }

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import styled from 'styled-components'
 import axios from 'axios'
-
+import { useNavigate } from 'react-router-dom';
 import { BrowserRouter as Router, Routes, Link, Route } from 'react-router-dom'
 //image
 import beelancer_logo from '../assets/svg/logo.svg'
@@ -20,6 +20,7 @@ const JobPost = () => {
   const [budget, setBudget] = useState(0)
   //submite check
   const [submit,setSubmit] = useState(false)
+  const navigate = useNavigate();
   //path
   const url = "localhost:8080/api/jobPost/createPost"
   const save = () => {
@@ -104,6 +105,7 @@ const JobPost = () => {
     //
     console.log("submite check")
     save()
+    navigate("/JobList")
   }
   return (
     <div style={{
