@@ -141,7 +141,7 @@ const Header = () => {
                       <SearchIcon />
                     </IconButton>
                     <InputBase
-                      sx={{ ml: 1, flex: 1 }}
+                      sx={{ ml: 1, flex: 1,minWidth: '580px' }}
                       placeholder='Search'
                       inputProps={{
                         'aria-label': 'search google maps',
