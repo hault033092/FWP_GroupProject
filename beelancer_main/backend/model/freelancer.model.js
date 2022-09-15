@@ -6,7 +6,7 @@ const freelancerSchema = new mongoose.Schema(
       type: mongoose.Types.ObjectId,
     },
     avatar: {
-      type:Buffer,
+      type: Buffer,
     },
     name: {
       type: String,
@@ -19,9 +19,9 @@ const freelancerSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    email:{
-      type:String,
-      required:true,
+    email: {
+      type: String,
+      required: true,
     },
     dateOfBirth: {
       type: String,
@@ -40,7 +40,7 @@ const freelancerSchema = new mongoose.Schema(
       required: true,
     },
   },
-  { timestamp: true }
+  { timestamps: true }
 )
 
 module.exports = mongoose.model('Freelancer', freelancerSchema)

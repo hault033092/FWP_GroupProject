@@ -5,7 +5,6 @@ const clientSchema = new mongoose.Schema(
     user: {
       type: mongoose.Types.ObjectId,
     },
-    avatar: {},
     name: {
       type: String,
       required: true,
@@ -21,6 +20,11 @@ const clientSchema = new mongoose.Schema(
     freelancerInProgress: {
       type: mongoose.Types.ObjectId,
     },
+    jobPosts: [
+      {
+        type: mongoose.Types.ObjectId,
+      },
+    ],
   },
   { timestamps: true }
 )

@@ -2,14 +2,15 @@ const mongoose = require('mongoose')
 
 const ratingSchema = new mongoose.Schema(
   {
-    freelancer: {
+    client: {
       type: mongoose.Types.ObjectId,
     },
+
     title: {
       type: String,
       required: true,
     },
-    description: {
+    review: {
       type: String,
       required: true,
     },
