@@ -5,7 +5,7 @@ const bcrypt = require('bcryptjs')
 const { registerValidation, loginValidation } = require('../helper/validation')
 
 // Create a user with validation
-router.post('/register', async (req, res) => {
+router.post('/signup', async (req, res) => {
   //Validate
   const { error } = registerValidation(req.body)
   if (error) return res.status(400).send(error.details[0].message)
@@ -37,7 +37,7 @@ router.post('/register', async (req, res) => {
 })
 
 //User login
-router.post('/login', async (req, res) => {
+router.post('/signin', async (req, res) => {
   //
   const { error } = loginValidation(req.body)
   if (error) return res.status(400).send(error.details[0].message)
