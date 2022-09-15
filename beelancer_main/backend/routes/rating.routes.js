@@ -27,11 +27,8 @@ router.get('/getRating/:ratingId', verify, async (req, res) => {
 })
 
 // Create rating
-router.post('/createRating/:userId', verify, async (req, res) => {
-  const foundClient = await User.findOne({
-    _id: req.params.userId,
-  }).lean()
-  if (foundClient.role == 'CLIENT') {
+router.post('/createRating/', verify, async (req, res) => {
+  if (req.user.role == 'CLIENT') {
     const newRating = new Rating({
       userId: req.user._id,
       raterName: req.body.name,
