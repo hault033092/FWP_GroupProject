@@ -63,9 +63,11 @@ router.post('/signin', async (req, res) => {
       _id: foundUser._id,
       role: foundUser.role,
     },
-    process.env.TOKEN_SECRET
+    process.env.TOKEN_SECRET,
+    { expiresIn: '12h' }
   )
-  res.header('auth-token', token).send(token)
+  foundUser.token = token
+  res.status(200).json(foundUser)
 })
 
 // Get all users
