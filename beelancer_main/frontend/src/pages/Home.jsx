@@ -20,7 +20,7 @@ const Home = () => {
                   style={{
                     position: 'relative',
                   }}
-                  src='./assets/images/landing1.png'
+                  src={require("../assets/images/landing1.png")}
                 />
               </div>
               <div className='leftCol'>
@@ -44,14 +44,14 @@ const Home = () => {
                 }}
               >
                 <div className='rightLine' />
-
-                <img
+              {/* image of given name below does not exist */}
+                {/* <img
                   style={{
-                    position: 'relative',
-                    maxWidth: '600px',
+                    position: "relative",
+                    maxWidth: "600px",
                   }}
-                  src='./images/image62.png'
-                />
+                  src={require("../assets/images/62.png")}
+                /> */}
               </div>
               <div className='rightCol'>
                 <p>WANT TO BECOME A BEE IN CLICKS.</p>
@@ -83,7 +83,7 @@ const Home = () => {
             width: '450px',
             height: '550px',
           }}
-          src='./images/quote1.png'
+          src={require("../assets/images/quote1.png")}
         />
       </section>
       {/* qoute section end */}
@@ -93,11 +93,15 @@ const Home = () => {
         <h2 color='#000'>WHAT TO EXPECTED (AS A CLIENT)</h2>
         <Container>
           <div
-            style={{
-              textAlign: 'center',
-            }}
+                     style={{
+                        textAlign: "center",
+                        display: "flex", 
+                        flexDirection: "column", 
+                        justifyContent: "center", 
+                        alignItems: "center"
+                      }}
           >
-            <img src='./images/vector.png' />
+            <img src={require("../assets/images/Vector.png")} />
             <h3>
               Financially
               <br /> benefit
@@ -108,11 +112,15 @@ const Home = () => {
             </p>
           </div>
           <div
-            style={{
-              textAlign: 'center',
-            }}
+                      style={{
+                        textAlign: "center",
+                        display: "flex", 
+                        flexDirection: "column", 
+                        justifyContent: "center", 
+                        alignItems: "center"
+                      }}
           >
-            <img src='./images/vector2.png' />
+                  <img src={require("../assets/images/vector2.png")} />
             <h3>Secured and easy payment</h3>
             <p>
               Payment methods are secured with top-notch security protocol and
@@ -120,11 +128,15 @@ const Home = () => {
             </p>
           </div>
           <div
-            style={{
-              textAlign: 'center',
-            }}
+                       style={{
+                        textAlign: "center",
+                        display: "flex", 
+                        flexDirection: "column", 
+                        justifyContent: "center", 
+                        alignItems: "center"
+                      }}
           >
-            <img src='./images/vector3.png' />
+          <img src={require("../assets/images/Vector3.png")} />
             <h3>All day and all night availability</h3>
             <p>
               Never miss an oppotunity to find the best freelancer for the right
@@ -142,11 +154,15 @@ const Home = () => {
         </h2>
         <Container>
           <div
-            style={{
-              textAlign: 'center',
-            }}
+                       style={{
+                        textAlign: "center",
+                        display: "flex", 
+                        flexDirection: "column", 
+                        justifyContent: "center", 
+                        alignItems: "center"
+                      }}
           >
-            <img src='./images/Vector4.png' />
+               <img src={require("../assets/images/Vector4.png")} />
             <h3
               style={{
                 color: '#E8AA0C',
@@ -164,11 +180,15 @@ const Home = () => {
             </p>
           </div>
           <div
-            style={{
-              textAlign: 'center',
-            }}
+                      style={{
+                        textAlign: "center",
+                        display: "flex", 
+                        flexDirection: "column", 
+                        justifyContent: "center", 
+                        alignItems: "center"
+                      }}
           >
-            <img src='./images/Vector5.png' />
+             <img src={require("../assets/images/vector5.png")} />
             <h3
               style={{
                 color: '#E8AA0C',
@@ -186,11 +206,15 @@ const Home = () => {
             </p>
           </div>
           <div
-            style={{
-              textAlign: 'center',
-            }}
+                      style={{
+                        textAlign: "center",
+                        display: "flex", 
+                        flexDirection: "column", 
+                        justifyContent: "center", 
+                        alignItems: "center"
+                      }}
           >
-            <img src='./images/Vector6.png' />
+            <img src={require("../assets/images/vector6.png")} />
             <h3
               style={{
                 color: '#E8AA0C',
