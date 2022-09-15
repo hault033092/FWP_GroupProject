@@ -75,20 +75,28 @@ router.delete('/deleteFreelancer/:freelancerId', verify, async (req, res) => {
     res.json({ message: error })
   }
 })
-
+router.patch('/updateFreelancerAvatar/:freelancerId',upload.single("avatar"),async (req, res) => {
+  try {
+    //console.log("check here")
+    await Freelancer.updateOne(
+      {
+        _id: req.params.freelancerId,
+      },
+      {
+        $set: {
+          avatar: fs.readFileSync("uploads/"+ req.file.filename),
+        },
+      }
+    )
+      //console.log("updated")
+      res.send('Freelancer Updated!')
+    } catch (error) {
+      res.json({ message: error })
+    }
+})
 // Update post
-router.patch('/updateFreelancer/:freelancerId',upload.single("avatar"), verify, async (req, res) => {
+router.patch('/updateFreelancer/:freelancerId', verify, async (req, res) => {
 
-  console.log({
-    name: req.body.name,
-    avatar: req.body.avatar,
-    phoneNumber: req.body.phoneNumber,
-    dateOfBirth: req.body.dateOfBirth,
-    email: req.body.email,
-    address: req.body.address,
-    bio: req.body.bio,
-    personalSkills: req.body.personalSkills,
-  })
   try {
     //console.log("check here")
     await Freelancer.updateOne(
@@ -104,11 +112,11 @@ router.patch('/updateFreelancer/:freelancerId',upload.single("avatar"), verify, 
           address: req.body.address,
           bio: req.body.bio,
           personalSkills: req.body.personalSkills,
-          avatar: fs.readFileSync("uploads/"+ req.file.filename),
+          //avatar: fs.readFileSync("uploads/"+ req.file.filename),
         },
       }
     )
-    console.log("updated")
+    //console.log("updated")
     res.send('Freelancer Updated!')
   } catch (error) {
     res.json({ message: error })

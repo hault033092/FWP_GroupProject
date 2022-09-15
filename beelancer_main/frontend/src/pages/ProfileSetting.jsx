@@ -10,21 +10,35 @@ import { useNavigate } from 'react-router-dom';
 export default function ProfileSetting() {
   //avatar profile 
   const [image, setImage] = useState(null)
-  const [startingImage, setStarting] = useState()
+  const [defaultUse, setDefaultUse] = useState()
+
   const [preview, setPreview] = useState(Avatar)
   const fileInputRef = useRef(null)
   useEffect(() => {
-    if (image) {
+    if (image && defaultUse === 1) {
       const render = new FileReader()
       render.onloadend = () => {
         setPreview(render.result)
       };
       render.readAsDataURL(image)
     }
-    else {
-      setPreview(Avatar)
-    }
   })
+  //avatar display
+  function AvatarDisplay()
+  {
+    if(defaultUse === 0)
+    {  
+      return <img src={Avatar} alt='UserAvatar' />
+    }
+    else if(defaultUse === 1)
+    {
+      //console.log("is this option is")
+      return <img src={preview} alt="UserAvatar" />
+    }
+    else{
+      return <img src={`data:image/png;base64,${image}`} alt='UserAvatar' />
+    }
+  }
   const [name, setName] = useState("")
   const [userId, setUserId] = useState("631f4c84412d288586026ab9")
   const [dateOfBirth, setDateOfBirth] = useState("")
@@ -35,6 +49,7 @@ export default function ProfileSetting() {
     //toggle show state
     setReviewShown(!reviewShown)
   }
+  
   //skill
   const [skills, setSkills] = useState([])
   const [skillInput, setSkillInput] = useState('')
@@ -68,6 +83,7 @@ export default function ProfileSetting() {
 
   const cURL = "http://localhost:8080/api/freelancer/updateFreelancer/63222cf380e3b60caa1f3a85"
   const rURL = "http://localhost:8080/api/freelancer/getFreelancer/63222cf380e3b60caa1f3a85"
+  const aURL = "http://localhost:8080/api/freelancer/updateFreelancerAvatar/63222cf380e3b60caa1f3a85"
   const load = () => {
     axios.get(rURL, {
       headers: {
@@ -79,6 +95,16 @@ export default function ProfileSetting() {
       .then(
         res => {
           const data = res.data
+          if(data.avatar !== undefined)
+          {
+            setDefaultUse(2)
+            //console.log("or this")
+            setImage(btoa(String.fromCharCode(...new Uint8Array(data.avatar.data))))
+          //console.log("or this: "+ avatar)
+          }
+          else{
+            setDefaultUse(0)
+          }
           setName(data.name)
           setPhone(data.phoneNumber)
           setEmail(data.email)
@@ -97,31 +123,31 @@ export default function ProfileSetting() {
   }, [])
   const save = () => {
 
-    const data = new FormData();
-    data.append("user", userId);
-    data.append("avatar", image);
-    data.append("name", name);
-    data.append("phoneNumber", contactPhone)
-    data.append("dateOfBirth", dateOfBirth)
-    data.append("email", contactEmail)
-    data.append("address", address)
-    data.append("bio", jobs.toString())
-    data.append("personalSkills", skills.toString())
-    console.log({
-      user: userId,
-      avatar: image,
-      name: name,
-      phoneNumber: contactPhone,
-      dateOfBirth: dateOfBirth,
-      email: contactEmail,
-      address: address,
-      bio: jobs.toString(),
-      personalSkills: skills.toString()
-    })
+    // const data = new FormData();
+    // data.append("user", userId);
+    // data.append("avatar", image);
+    // data.append("name", name);
+    // data.append("phoneNumber", contactPhone)
+    // data.append("dateOfBirth", dateOfBirth)
+    // data.append("email", contactEmail)
+    // data.append("address", address)
+    // data.append("bio", jobs.toString())
+    // data.append("personalSkills", skills.toString())
+    // console.log({
+    //   user: userId,
+    //   avatar: image,
+    //   name: name,
+    //   phoneNumber: contactPhone,
+    //   dateOfBirth: dateOfBirth,
+    //   email: contactEmail,
+    //   address: address,
+    //   bio: jobs.toString(),
+    //   personalSkills: skills.toString()
+    // })
     axios.patch(cURL, {
 
       user: userId,
-      avatar:image,
+      //avatar:image,
       name: name,
       phoneNumber: contactPhone,
       dateOfBirth: dateOfBirth,
@@ -132,16 +158,30 @@ export default function ProfileSetting() {
     },
       {
         headers: {
-         // 'Content-Type': 'application/json',
-          'Content-Type': 'multipart/form-data',
+         'Content-Type': 'application/json',
+          //'Content-Type': 'multipart/form-data',
           'auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzFmNGM4NDQxMmQyODg1ODYwMjZhYjkiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NjMwNjA3NDR9.vUWXh262lz12tbp9E9ZIWr26sW6N3b62HXFwrECsUa0'
 
         }
       })
       .then(res => {
-        console.log("submission successful!")
-        //console.log(res.body)
+        //console.log("submission successful!")
+        console.log(res)
       })
+    //fetch image
+    axios.patch(aURL,{
+      avatar: image,
+    },{
+      headers: {
+       //'Content-Type': 'application/json',
+        'Content-Type': 'multipart/form-data',
+        'auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzFmNGM4NDQxMmQyODg1ODYwMjZhYjkiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NjMwNjA3NDR9.vUWXh262lz12tbp9E9ZIWr26sW6N3b62HXFwrECsUa0'
+
+      }
+    }).then(res => {
+      //console.log("submission successful!")
+      console.log(res)
+    })
   }
   //display error on submit if content is empty
   function SubmitErrorWarning() {
@@ -184,7 +224,8 @@ export default function ProfileSetting() {
         <Form>
           <form action='' onSubmit={handleSubmit}>
             <div className='avatar'>
-              <img src={preview} alt="UserAvatar" />
+              <AvatarDisplay />
+              
               <button className='overlay'
                 onClick={(event) => {
                   event.preventDefault()
@@ -195,7 +236,9 @@ export default function ProfileSetting() {
                 onChange={(event) => {
                   const file = event.target.files[0]
                   if (file) {
-                    console.log(file)
+                    //console.log(file)
+                    // onchange set icon to view preview
+                    setDefaultUse(1)
                     setImage(file)
                   }
                   else {
