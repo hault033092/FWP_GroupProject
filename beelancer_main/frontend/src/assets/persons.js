@@ -11,23 +11,23 @@ const data = [
     id: 1,
     occupation: "Front-end Developer",
     image: person1,
-    tags: ["#social", "#cinema", "#beach"],
+    tags: ["#social", "#cinema", "#games"],
     about:
-      "A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine.,",
+      "My name is Khanh, and I enjoy promoting small companies to help them increase their profits. I am excited for the opportunity to be part of a team that increases awareness of the businesses in Saigon. I have a strong background in public relations and IT and would love to tell you about the strengths I could bring to this position.",
     needs: [
       "A wonderful serenity has taken possession of my entire soul like these sweet.",
       "And the meridian sun strikes the upper surface of the impenetrable foliage.",
       "Plants are noticed by me: when I hear the buzz of the little world among the stalks.",
     ],
     likes: [
-      "A wonderful serenity has taken possession of my entire soul like these sweet.",
-      "And the meridian sun strikes the upper surface of the impenetrable foliage.",
-      "Plants are noticed by me: when I hear the buzz of the little world among the stalks.",
+      "Video games",
+      "Cooking",
+      "Playing sports",
     ],
     frustrations: [
-      "A wonderful serenity has taken possession of my entire soul like these sweet.",
-      "And the meridian sun strikes the upper surface of the impenetrable foliage.",
-      "Plants are noticed by me: when I hear the buzz of the little world among the stalks.",
+      "Deadline ",
+      "Time management",
+      "Going to school early",
     ],
   },
   {
@@ -37,21 +37,21 @@ const data = [
     image: person2,
     tags: ["#computers", "#music", "#gaming"],
     about:
-      "A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine.,",
+      "My name is Hậu, I have lots of experience with building desktop applications in java and python, as well as experience with c, c++ and web development.",
     needs: [
-      "A wonderful serenity has taken possession of my entire soul like these sweet.",
-      "And the meridian sun strikes the upper surface of the impenetrable foliage.",
-      "Plants are noticed by me: when I hear the buzz of the little world among the stalks.",
+      "Academic experience with software development.",
+      "Working.",
+      "Payment.",
     ],
     likes: [
-      "A wonderful serenity has taken possession of my entire soul like these sweet.",
-      "And the meridian sun strikes the upper surface of the impenetrable foliage.",
-      "Plants are noticed by me: when I hear the buzz of the little world among the stalks.",
+      "Cooking",
+      "Playing with pets",
+      "Going out with friends",
     ],
     frustrations: [
-      "A wonderful serenity has taken possession of my entire soul like these sweet.",
-      "And the meridian sun strikes the upper surface of the impenetrable foliage.",
-      "Plants are noticed by me: when I hear the buzz of the little world among the stalks.",
+      "Time management",
+      "Deadline",
+      "Low salary",
     ],
   },
   {
@@ -61,21 +61,21 @@ const data = [
     image: person3,
     tags: ["#design", "#linguistics", "#teaching"],
     about:
-      "A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine.,",
-    needs: [
-      "A wonderful serenity has taken possession of my entire soul like these sweet.",
-      "And the meridian sun strikes the upper surface of the impenetrable foliage.",
-      "Plants are noticed by me: when I hear the buzz of the little world among the stalks.",
-    ],
-    likes: [
-      "A wonderful serenity has taken possession of my entire soul like these sweet.",
-      "And the meridian sun strikes the upper surface of the impenetrable foliage.",
-      "Plants are noticed by me: when I hear the buzz of the little world among the stalks.",
-    ],
-    frustrations: [
-      "A wonderful serenity has taken possession of my entire soul like these sweet.",
-      "And the meridian sun strikes the upper surface of the impenetrable foliage.",
-      "Plants are noticed by me: when I hear the buzz of the little world among the stalks.",
+      "My name is Nguyên. Looking for Mern Stack developer? you are at right place! I have experience in React JS,Node Js, TypeScript, JavaScript, Express JS, Mongo DB, Material UI, Bootstrap, PSD, XD, Figma, Web Animation to responsive ReactJS application.",
+      needs: [
+        "Academic experience with software development.",
+        "Working.",
+        "Payment.",
+      ],
+      likes: [
+        "Cooking",
+        "Playing with pets",
+        "Going out with friends",
+      ],
+      frustrations: [
+        "Time management",
+        "Deadline",
+        "Low salary",
     ],
   },
   {
@@ -83,23 +83,23 @@ const data = [
     id: 4,
     occupation: "Front-end Developer",
     image: person4,
-    tags: ["#social", "#cinema", "#beach"],
+    tags: ["#social", "#cinema", "#money"],
     about:
-      "A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine.,",
-    needs: [
-      "A wonderful serenity has taken possession of my entire soul like these sweet.",
-      "And the meridian sun strikes the upper surface of the impenetrable foliage.",
-      "Plants are noticed by me: when I hear the buzz of the little world among the stalks.",
-    ],
-    likes: [
-      "A wonderful serenity has taken possession of my entire soul like these sweet.",
-      "And the meridian sun strikes the upper surface of the impenetrable foliage.",
-      "Plants are noticed by me: when I hear the buzz of the little world among the stalks.",
-    ],
-    frustrations: [
-      "A wonderful serenity has taken possession of my entire soul like these sweet.",
-      "And the meridian sun strikes the upper surface of the impenetrable foliage.",
-      "Plants are noticed by me: when I hear the buzz of the little world among the stalks.",
+      "I am an exprienced Front End Developer in React JS, HTML, CSS, Bootstrap and javascript. I have mastered these technologies for more than one and a half year. And have done dozens of projects in Front End Web Development for my clients worldwide. So I am sure that I can provide you with the best Web Development solutions that stand out and speak for themselves.",
+      needs: [
+        "A wonderful serenity has taken possession of my entire soul like these sweet.",
+        "And the meridian sun strikes the upper surface of the impenetrable foliage.",
+        "Plants are noticed by me: when I hear the buzz of the little world among the stalks.",
+      ],
+      likes: [
+        "Video games",
+        "Cooking",
+        "Playing sports",
+      ],
+      frustrations: [
+        "Deadline ",
+        "Time management",
+        "Going to school early",
     ],
   },
   {
@@ -109,7 +109,7 @@ const data = [
     image: person5,
     tags: ["#coding", "#gaming", "#gym"],
     about:
-      "A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine.,",
+      " If you are looking for someone who provides you with quality work then you are in the right place. I'm an expert front-end developer who has done multiple projects with 100% client satisfaction. I can do front end web development in React.js, Typescript, Next.js, JavaScript and Vue.js",
     needs: [
       "Coding, I am currently grinding Java and C#, which are my favorite languages",
       "Working out 5-7 days a week is necessary for me to recover from COVID-19.",
@@ -121,9 +121,9 @@ const data = [
       "After hours of coding, I unwind by playing video games, which has a significant impact on my mental state..",
     ],
     frustrations: [
-      "A wonderful serenity has taken possession of my entire soul like these sweet.",
-      "And the meridian sun strikes the upper surface of the impenetrable foliage.",
-      "Plants are noticed by me: when I hear the buzz of the little world among the stalks.",
+      "Deadline ",
+      "Time management",
+      "Going to school early",
     ],
   },
   {
@@ -134,20 +134,20 @@ const data = [
     tags: ["#social", "#cinema", "#beach"],
     about:
       "A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine.,",
-    needs: [
-      "A wonderful serenity has taken possession of my entire soul like these sweet.",
-      "And the meridian sun strikes the upper surface of the impenetrable foliage.",
-      "Plants are noticed by me: when I hear the buzz of the little world among the stalks.",
-    ],
-    likes: [
-      "A wonderful serenity has taken possession of my entire soul like these sweet.",
-      "And the meridian sun strikes the upper surface of the impenetrable foliage.",
-      "Plants are noticed by me: when I hear the buzz of the little world among the stalks.",
-    ],
-    frustrations: [
-      "Noises because they greatly distract me. I require focus when working.",
-      "I detest being ill. I want to always be in good health.",
-      " Overload of deadlines in a short period of time.",
+      needs: [
+        "Coding, I am currently grinding Java and C#, which are my favorite languages",
+        "Working out 5-7 days a week is necessary for me to recover from COVID-19.",
+        "After hours of coding, I unwind by playing video games, which has a significant impact on my mental state..",
+      ],
+      likes: [
+        "Coding, I am currently grinding Java and C#, which are my favorite languages",
+        "Working out 5-7 days a week is necessary for me to recover from COVID-19.",
+        "After hours of coding, I unwind by playing video games, which has a significant impact on my mental state..",
+      ],
+      frustrations: [
+        "Deadline ",
+        "Time management",
+        "Going to school early",
     ],
   },
 ];
