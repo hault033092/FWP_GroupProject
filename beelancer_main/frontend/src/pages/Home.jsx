@@ -44,14 +44,13 @@ const Home = () => {
                 }}
               >
                 <div className='rightLine' />
-              {/* image of given name below does not exist */}
-                {/* <img
+                <img
                   style={{
                     position: "relative",
                     maxWidth: "600px",
                   }}
-                  src={require("../assets/images/62.png")}
-                /> */}
+                  src={require("../assets/images/landing2.png")}
+                />
               </div>
               <div className='rightCol'>
                 <p>WANT TO BECOME A BEE IN CLICKS.</p>
