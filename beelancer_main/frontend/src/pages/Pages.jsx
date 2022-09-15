@@ -8,7 +8,7 @@ import ForgotPassword from './ForgotPassword'
 import JobPost from './JobPost'
 import ContactUs from './ContactUs'
 import Rating from './Rating'
-import JobList from '../JobList/JobList'
+import JobList from './JobList/JobList'
 import ProfileSetting from './ProfileSetting'
 import FreelancerProfile from './FreelancerProfile'
 
