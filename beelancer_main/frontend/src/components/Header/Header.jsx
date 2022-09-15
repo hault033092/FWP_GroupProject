@@ -112,8 +112,7 @@ export const Button = styled.button`
 const Header = () => {
   return (
     <div className='header'>
-      <div className='  grid__1200 wide'>
-        <div className='header__pc'>
+     <div className='header__pc'>
           <Component>
             <Left>
               <Logo>
@@ -220,7 +219,6 @@ const Header = () => {
             </div>
           </div>
         </div>
-      </div>
     </div>
   )
 }
