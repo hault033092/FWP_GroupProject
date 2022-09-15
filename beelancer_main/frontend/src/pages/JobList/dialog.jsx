@@ -18,18 +18,19 @@ function CustomDialog({ open, handleClose, data }) {
         open={open}
         onClose={handleClose}
       >
-        {/* <DialogTitle variant="h4">client's name</DialogTitle> */}
+        <DialogTitle variant="h7" className="border-b">Client's name: {client}</DialogTitle>
         <DialogContent>
-          <Typography variant="h5">{title}</Typography>
-          <DialogContentText variant="h6" component="p" className="py-2">
-            {description}
+          <Typography variant="h5" className="!text-center !m-4">Title: {title}</Typography>
+          <hr />
+          <DialogContentText variant="h6" component="p" className="py-2 !mt-4">
+            Description: {description}
           </DialogContentText>
-          <Typography variant="h6" className="!py-1">
-            Skills: {skills}
+          <Typography variant="h6" className="!py-1 !mt-4">
+            <span style={{fontWeight: 'bold'}}>Skills: </span>{skills}
           </Typography>
           <div className="flex justify-between">
-            <Typography variant="h6">Job: {jobCategory}</Typography>
-            <Typography variant="h6">Budget: ${budget}</Typography>
+            <Typography variant="h6"><span style={{fontWeight: 'bold'}}>Job: </span>{jobCategory}</Typography>
+            <Typography variant="h6"> <span style={{fontWeight: 'bold'}}>Budget: </span>${budget}</Typography>
           </div>
         </DialogContent>
         <DialogActions>
