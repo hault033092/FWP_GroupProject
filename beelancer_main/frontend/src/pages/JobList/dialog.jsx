@@ -8,7 +8,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 function CustomDialog({ open, handleClose, data }) {
-  //   console.log(data);
+    // console.log(data);
   const { title, description, budget, skills, jobCategory, client } = data;
   return (
     <>
@@ -18,7 +18,7 @@ function CustomDialog({ open, handleClose, data }) {
         open={open}
         onClose={handleClose}
       >
-        <DialogTitle variant="h7" className="border-b">Client's name: {client}</DialogTitle>
+        {/* <DialogTitle variant="h7" className="border-b">Client's name: {client}</DialogTitle> */}
         <DialogContent>
           <Typography variant="h5" className="!text-center !m-4">Title: {title}</Typography>
           <hr />
