@@ -1,33 +1,64 @@
 import React, { useState } from 'react'
 
 import styled from 'styled-components'
-
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
 import { BrowserRouter as Router, Routes, Link, Route } from 'react-router-dom'
 //image
 import beelancer_logo from '../assets/svg/logo.svg'
-function PayByHour() {
-  return (
-    <SubTextBox>
-      <h3>Minium Payment</h3>
-      <input type='text' id='miniumPayment' name='miniumPayment' />
-      <h3>Maxium Payment</h3>
-      <input type='text' id='miniumPayment' name='miniumPayment' />
-    </SubTextBox>
-  )
-}
-function PayFixedPrice() {
-  return (
-    <SubTextBox>
-      <h3>Name your Payment</h3>
-      <input type='text' id='miniumPayment' name='miniumPayment' />
-    </SubTextBox>
-  )
-}
 const JobPost = () => {
   const [selectedImages, setSelectedImages] = useState([])
   const [count, setCount] = useState(400)
+  //info
+  const [title, setTitle] = useState("")
+  const [cate, setCate] = useState("")
+  const [description, setDescription] = useState("")
+
   const [skills, setSkills] = useState([])
   const [skillInput, setSkillInput] = useState('')
+
+  const [budget, setBudget] = useState(0)
+  //submite check
+  const [submit,setSubmit] = useState(false)
+  const navigate = useNavigate();
+  //path
+  const url = "localhost:8080/api/jobPost/createPost"
+  const save = () => {
+    //event.preventDefault()
+    axios.post(url,
+      {
+        title: title,
+        description: description,
+        jobCategory: cate,
+        skills: skills,
+        budget: budget
+      }
+    ).then(res => {
+      console.log(res)
+      //do something after job post is posted
+    })
+  }
+  //descripition word count
+  function WordCount() {
+    if (count < 0) {
+      return (<p className='outOfCount'>Too Long!!</p>)
+    }
+    else {
+      //console.log("count is:" + count)
+      return (
+        <p className='wordCount'>{count} characters remaining</p>
+      )
+    }
+  }
+  //display error on submit if content is empty
+  function SubmitErrorWarning()
+  {
+    if(submit === true)
+    {
+      return(<p className='submitWarning'>Please check your post, an input field may be missing!</p>)
+    }
+    return
+  }
   //
   const onSelectedFile = (event) => {
     const selectedFiles = event.target.files
@@ -51,9 +82,36 @@ const JobPost = () => {
   //handle submit
   const handleSubmit = (event) => {
     event.preventDefault()
+    setSubmit(true)
+    if(title ==="")
+    {
+      console.log("missing content")
+      return
+    }
+    if(count<0 || count >=400)
+    {
+      console.log("failed submite due to description")
+      return
+    }
+    if(cate ==="")
+    {
+      console.log("missing catergory")
+      return
+    }
+    if(budget === 0)
+    {
+      console.log("empty budget")
+    }
+    //
+    console.log("submite check")
+    save()
+    navigate("/JobList")
   }
   return (
-    <div style={{ backgroundColor: ' rgba(232, 170, 12, 0.5)' }}>
+    <div style={{
+      backgroundColor: ' rgba(232, 170, 12, 0.5)',
+      paddingTop: '50px', paddingBottom: '50px'
+    }}>
       <BackgroundLayer />
       <PostForm>
         <img className='logo' src={beelancer_logo} alt='beelancer logo' />
@@ -70,20 +128,37 @@ const JobPost = () => {
               id='name'
               name='name'
               placeholder='Game of throne audio book, etc..'
+              onChange={(event) =>
+                setTitle(event.target.value)}
+            />
+          </TextBox>
+          <TextBox>
+            <h2>Category Of Project</h2>
+            <input
+              type='category'
+              id='category'
+              name='category'
+              placeholder='Video games, Music app'
+              onChange={(event) =>
+                setCate(event.target.value)}
             />
           </TextBox>
           <TextBox>
             <h2>Description</h2>
+            <p></p>
             <textarea
               name='description'
               id='description'
               placeholder='We need emotional voices...'
               onChange={(e) => {
                 setCount(400 - e.target.value.length)
+                setDescription(e.target.value)
               }}
             ></textarea>
-            <p className='wordCount'>{count} characters remaining</p>
+            <WordCount />
           </TextBox>
+          {
+            /*
           <TextBox>
             <h2>Visualise your project</h2>
             <div className='imageBox'>
@@ -104,7 +179,6 @@ const JobPost = () => {
                   </div>
                 )
               })}
-
               <label>
                 <input
                   className='imageInput'
@@ -121,6 +195,7 @@ const JobPost = () => {
               </label>
             </div>
           </TextBox>
+            */}
           <TextBox>
             <h2>Skill Requirement</h2>
             <p className='note'>Note: only one skill at a time</p>
@@ -159,40 +234,25 @@ const JobPost = () => {
           </TextBox>
           <PaymentBox>
             <h2>Payment</h2>
-            <PaymentSection>
-              <Link
-                className='paymentLink'
-                to='/byHour'
-                style={{ textDecoration: 'none' }}
-              >
-                <label htmlFor='paymentByHour'>
-                  <input type='radio' id='paymentByHour' name='payment' />
-                  <p>Pay by the hour</p>
-                </label>
-              </Link>
-
-              <Link
-                className='paymentLink'
-                to='/fixedPrice'
-                style={{ textDecoration: 'none' }}
-              >
-                <label htmlFor='payFixedPrice'>
-                  <input type='radio' id='payFixedPrice' name='payment' />
-                  <p>Pay fixed price</p>
-                </label>
-              </Link>
-            </PaymentSection>
             <div className='extendBox'>
-              <Routes>
-                <Route path='/byHour' element={<PayByHour />} />
-                <Route path='/fixedPrice' element={<PayFixedPrice />} />
-              </Routes>
-              <select name='currency' id='currency'>
-                <option value='USD'>USD</option>
-                <option value='VND'>VND</option>
-              </select>
+              <SubTextBox>
+                <h3>Name your payment</h3>
+                <div className='paymentGroup'>
+                  <input type='text' id='miniumPayment' name='miniumPayment'
+                   onKeyPress={(event) => {
+                    if (!/[0-9]/.test(event.key)) {
+                      event.preventDefault();
+                    }
+                  }}
+                  onChange={(event) =>{
+                    setBudget(event.target.value)
+                  }} />
+                  <p>USD</p>
+                </div>
+              </SubTextBox>
             </div>
           </PaymentBox>
+          <SubmitErrorWarning />
           <input className='submitButton' type='submit' value='Post Project' />
         </form>
       </PostForm>
@@ -204,13 +264,11 @@ const PostForm = styled.section`
   position: relative;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 50px;
   width: 55%;
   background-color: white;
   border-radius: 50px;
   align-items: center;
   justify-content: center;
-  margin-bottom: 50px;
   box-shadow: 5px 10px 5px 0px rgba(0, 0, 0, 0.25);
   -webkit-box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.25);
   -moz-box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.25);
@@ -253,6 +311,12 @@ const PostForm = styled.section`
       color: #e8aa0c;
     }
   }
+  .submitWarning{
+    text-align: center;
+    font-size: 14px;
+    font-weight: lighter;
+    color:red;
+  }
   @media (max-width: 1200px) {
     width: 70%;
   }
@@ -283,7 +347,8 @@ const BackgroundLayer = styled.section`
   width: 100%;
   background-color: rgba(232, 170, 12, 0.5);
   position: absolute;
-  height: 700px;
+  top:0;
+  height:700px;
   z-index: 1;
 `
 const TextBox = styled.section`
@@ -340,6 +405,14 @@ const TextBox = styled.section`
     text-align: right;
     margin-right: 4%;
     font-style: italic;
+  }
+  .outOfCount{
+    color: #eb4f34;
+    font-size: 14px;
+    text-align: right;
+    margin-right: 4%;
+    font-style: italic;
+    font-weight:  bold;
   }
   .imageBox {
     width: 96%;
@@ -446,7 +519,7 @@ const TextBox = styled.section`
 `
 const SubTextBox = styled.section`
   position: relative;
-  width: 40%;
+  width: 60%;
   margin-left: 5%;
   h3 {
     font-size: 16px;
@@ -454,9 +527,20 @@ const SubTextBox = styled.section`
     color: rgba(0, 0, 0, 0.5);
     margin-bottom: 5px;
   }
+  .paymentGroup{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    p{
+      margin-left: 50px;
+      color:#e8aa0c;
+      font-weight: bold;
+    }
+  }
   input {
     margin-left: 10px;
-    width: 100%;
+    width: 80%;
     height: 40px;
     border: none;
     border-radius: 10px;
@@ -539,12 +623,10 @@ const PaymentSection = styled.section`
     width: 17px;
     height: 17px;
     border: #e8aa0c solid 2px;
-
     border-radius: 50%;
     margin-right: 5px;
     cursor: pointer;
   }
-
   label {
     width: 200px;
     cursor: pointer;
