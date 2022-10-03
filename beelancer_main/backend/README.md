@@ -9,7 +9,7 @@ Prerequesites to test the system:
 
 1. Open "Beelancer_main" folder with IDE.
 2. "cd backend" in the terminal to change directory.
-3. run "npm i nodemon mongoose express cors dotenv jsonwebtoken bcryptjs joi @hapi/joi multer fs" (copy and paste this command into the terminal)
+3. run "npm i nodemon mongoose express cors dotenv jsonwebtoken bcryptjs joi @hapi/joi multer fs --save" (copy and paste this command into the terminal)
 4. run the command "npm start".
 
 - Steps to test on Postman:

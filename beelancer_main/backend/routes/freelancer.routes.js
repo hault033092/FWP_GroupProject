@@ -28,7 +28,7 @@ router.get('/getFreelancer/:freelancerId', verify, async (req, res) => {
       const rating = await Rating.find({
         userId: foundFreelancer._id,
       }).lean()
-
+      console.log
       res.json({
         id: foundFreelancer._id,
         name: foundFreelancer.name,

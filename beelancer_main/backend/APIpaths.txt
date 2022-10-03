@@ -1,9 +1,8 @@
 // User
-localhost:8080/api/user/getUsers
-localhost:8080/api/user/getUser/:userId
 localhost:8080/api/user/signin
 localhost:8080/api/user/signup
 localhost:8080/api/user/getUsers
+localhost:8080/api/user/getUser/:userId
 localhost:8080/api/user/updateUser/:userId
 localhost:8080/api/user/deleteUser/:userId
 
@@ -21,3 +20,18 @@ localhost:8080/api/freelancer/getFreelancerByUser/:userId
 localhost:8080/api/freelancer/createFreelancer
 localhost:8080/api/freelancer/deteleFreelancer/:freelancerId
 localhost:8080/api/freelancer/updateFreelancer/:freelancerId
+
+// Client
+localhost:8080/api/client/getClients
+localhost:8080/api/client/getClient/:clientId
+localhost:8080/api/client/getFreelancerByUser/:userId
+localhost:8080/api/client/createFreelancer
+localhost:8080/api/client/deteleFreelancer/:freelancerId
+localhost:8080/api/client/updateFreelancer/:freelancerId
+
+// Rating
+localhost:8080/api/rating/getRatings
+localhost:8080/api/rating/getRating/:ratingId
+localhost:8080/api/rating/createRating
+localhost:8080/api/rating/deleteRating/:ratingId
+localhost:8080/api/rating/updateRating/:ratingId

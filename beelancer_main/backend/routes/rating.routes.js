@@ -31,7 +31,7 @@ router.post('/createRating/', verify, async (req, res) => {
   if (req.user.role == 'CLIENT') {
     const newRating = new Rating({
       userId: req.user._id,
-      raterName: req.body.name,
+      raterName: req.body.raterName,
       title: req.body.title,
       review: req.body.review,
     })
@@ -49,7 +49,7 @@ router.post('/createRating/', verify, async (req, res) => {
 })
 
 // Delete rating
-router.delete('/deleteRating/:freelancerId', verify, async (req, res) => {
+router.delete('/deleteRating/:ratingId', verify, async (req, res) => {
   try {
     await Rating.deleteOne({
       _id: req.params.ratingId,
